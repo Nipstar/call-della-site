@@ -2,8 +2,10 @@ export const Footer = () => (
   <footer className="px-8 pt-[60px] pb-8 border-t border-[var(--rule)]">
     <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10">
       <div>
-        <div className="text-[22px] font-semibold text-[var(--ink)] font-serif tracking-tight leading-none">call della</div>
-        <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.22em] font-mono mt-1.5 uppercase">EST. 2026 · LEGAL INTAKE</div>
+        <a href="/" className="block no-underline">
+          <div className="text-[22px] font-semibold text-[var(--ink)] font-serif tracking-tight leading-none">call della</div>
+          <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.22em] font-mono mt-1.5 uppercase">EST. 2026 · LEGAL INTAKE</div>
+        </a>
         <p className="text-[13px] text-[var(--ink-soft)] font-serif italic mt-3.5 max-w-[300px]">An after-hours intake specialist for personal injury law firms.</p>
       </div>
       <div>
