@@ -27,9 +27,9 @@ export const Footer = () => (
       <div>
         <div className="text-[10px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-3.5">LEGAL</div>
         <div className="flex flex-col gap-2">
-          <a href="#" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Terms of Service</a>
-          <a href="#" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Privacy Policy</a>
-          <a href="#" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Security</a>
+          <a href="/terms" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Terms of Service</a>
+          <a href="/privacy" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Privacy Policy</a>
+          <a href="/security" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Security</a>
         </div>
       </div>
     </div>
