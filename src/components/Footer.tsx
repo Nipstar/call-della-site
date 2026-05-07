@@ -18,8 +18,8 @@ export const Footer = () => (
         <div className="text-[10px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-3.5">RESOURCES</div>
         <div className="flex flex-col gap-2">
           <a href="/intake-playbook" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Intake Playbook</a>
-          <span className="text-[13.5px] text-[var(--ink-soft)] font-serif">Operations (Soon)</span>
-          <span className="text-[13.5px] text-[var(--ink-soft)] font-serif">Compliance (Soon)</span>
+          <a href="/operations" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Operations</a>
+          <a href="/compliance" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Compliance</a>
         </div>
       </div>
       <div>
