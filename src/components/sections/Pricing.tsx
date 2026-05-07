@@ -5,9 +5,9 @@ import { openBookingModal } from '../BookingModal';
 
 export const Pricing = () => {
   const tiers = [
-    { name:"STANDARD · ENTRY", price:297, mins:"150", popular:false, features:["1 dedicated AI intake specialist","Call summaries + transcripts","Urgency classification","Email notifications","Standard email support"], cta:"Hire Standard" },
-    { name:"PRACTICE · POPULAR", price:547, mins:"300", popular:true, features:["Everything in Standard","SMS notifications for urgent calls","Custom intake protocol per firm","Priority email + phone support","Recording archive (90 days)"], cta:"Hire Practice" },
-    { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"1,000", popular:false, features:["Everything in Practice","Multiple AI agents (different personas)","CRM webhook integration","Dedicated success manager","SLA guarantees"], cta:"Book a conversation" }
+    { name:"STANDARD · ENTRY", price:297, mins:"400", popular:false, features:["1 dedicated AI intake specialist","Call summaries + transcripts","Urgency classification","Email notifications","Standard email support"], cta:"Hire Standard" },
+    { name:"PRACTICE · POPULAR", price:547, mins:"1,000", popular:true, features:["Everything in Standard","SMS notifications for urgent calls","Custom intake protocol per firm","Priority email + phone support","Recording archive (90 days)"], cta:"Hire Practice" },
+    { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"Custom", popular:false, features:["Everything in Practice","Multiple AI agents (different personas)","CRM webhook integration","Dedicated success manager","SLA guarantees"], cta:"Book a conversation" }
   ];
   return (
     <section id="pricing" className="px-8 py-24 max-w-[1180px] mx-auto">

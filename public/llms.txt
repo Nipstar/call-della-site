@@ -12,9 +12,9 @@ Della answers your firm's overnight calls, qualifies every caller, and delivers 
 - **Data Security**: Call Della is built for firms that take privilege seriously. Every recording, transcript, and dossier belongs to the firm. Data is never used to train models. SOC 2 Type II audit is underway, and BAA is available.
 
 ## Pricing
-- **Standard**: $297/month (Up to 150 minutes, 1 dedicated AI intake specialist)
-- **Practice**: $547/month (Up to 300 minutes, SMS notifications, custom protocol, 90-day archive)
-- **Group**: Contact Sales (Up to 1000 minutes, multiple agents, CRM webhook integration)
+- **Standard**: $297/month (Up to 400 minutes, 1 dedicated AI intake specialist)
+- **Practice**: $547/month (Up to 1000 minutes, SMS notifications, custom protocol, 90-day archive)
+- **Group**: Contact Sales (Custom volume, multiple agents, CRM webhook integration)
 
 ## Contact
 Visit calldella.com to book a 20-minute discovery call and review a real intake demonstration.
