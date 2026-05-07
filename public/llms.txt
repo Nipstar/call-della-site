@@ -1,0 +1,20 @@
+# Call Della
+
+> Description: An after-hours intake specialist for personal injury law firms.
+
+Della answers your firm's overnight calls, qualifies every caller, and delivers a triage-ready dossier by dawn. Built for personal injury intake from the first call. 
+
+## Key Information
+- **What it is**: An AI staffing service, not a software product. Firms hire Della to cover the hours their intake team isn't there.
+- **The Problem**: Personal injury firms spend thousands on lead generation, but 30-50% of inbound calls reach voicemail outside business hours. This leak costs an average of $250K+ in lost revenue annually.
+- **The Solution**: Della answers within two rings, identifies herself, and asks the right questions (incident type, date, jurisdiction, injury severity, fault, insurance, prior counsel, statute of limitations).
+- **The Delivery**: Every overnight call is summarized in a complete dossier available by 7 a.m., including the caller's own words, an AI-generated summary, urgency classification, and recommended action. 
+- **Data Security**: Call Della is built for firms that take privilege seriously. Every recording, transcript, and dossier belongs to the firm. Data is never used to train models. SOC 2 Type II audit is underway, and BAA is available.
+
+## Pricing
+- **Standard**: $297/month (Up to 150 minutes, 1 dedicated AI intake specialist)
+- **Practice**: $547/month (Up to 300 minutes, SMS notifications, custom protocol, 90-day archive)
+- **Group**: Contact Sales (Up to 1000 minutes, multiple agents, CRM webhook integration)
+
+## Contact
+Visit calldella.com to book a 20-minute discovery call and review a real intake demonstration.

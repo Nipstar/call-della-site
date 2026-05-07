@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root, :root[data-theme="light"] {
+  --bg: #E5D9BD;
+  --paper: #F4ECD6;
+  --paper-edge: #DDCFA8;
+  --paper-deep: #CFC195;
+  --ink: #1F1A11;
+  --ink-soft: #5C4F37;
+  --ink-faint: #9A8B69;
+  --rule: #3D332A;
+  --rule-soft: #8B7E5E;
+  --stamp-red: #A8351A;
+  --stamp-red-soft: rgba(168, 53, 26, 0.10);
+  --stamp-green: #3D5A2C;
+  --stamp-green-soft: rgba(61, 90, 44, 0.10);
+  --stamp-mustard: #8B6B1F;
+  --stamp-mustard-soft: rgba(139, 107, 31, 0.10);
+  --stamp-blue: #2C4F7A;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1A1510;
+  --paper: #231D14;
+  --paper-edge: #2C2519;
+  --paper-deep: #352D1F;
+  --ink: #E8DDC4;
+  --ink-soft: #A89978;
+  --ink-faint: #6B5D44;
+  --rule: #5C4F37;
+  --rule-soft: #3D332A;
+  --stamp-red: #D45438;
+  --stamp-red-soft: rgba(212, 84, 56, 0.14);
+  --stamp-green: #8AA66F;
+  --stamp-green-soft: rgba(138, 166, 111, 0.12);
+  --stamp-mustard: #C9994B;
+  --stamp-mustard-soft: rgba(201, 153, 75, 0.12);
+  --stamp-blue: #5E89BD;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-newsreader);
+  --font-mono: var(--font-jetbrains-mono);
+  
+  --color-bg: var(--bg);
+  --color-paper: var(--paper);
+  --color-paper-edge: var(--paper-edge);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --color-stamp-red: var(--stamp-red);
+  --color-stamp-red-soft: var(--stamp-red-soft);
+  --color-stamp-green: var(--stamp-green);
+  --color-stamp-green-soft: var(--stamp-green-soft);
+  --color-stamp-mustard: var(--stamp-mustard);
+  --color-stamp-mustard-soft: var(--stamp-mustard-soft);
+  --color-stamp-blue: var(--stamp-blue);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-newsreader), serif;
 }
