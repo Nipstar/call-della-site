@@ -1,8 +1,29 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { caseData } from '@/data/cases';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
+
+export const metadata: Metadata = {
+  title: 'PI Intake by Case Type',
+  description:
+    'PI intake protocols by case type — auto accidents, commercial trucking, slip and fall. Della-specific intake scripts and what to capture in the first three minutes.',
+  keywords: [
+    'PI intake by case type',
+    'auto accident intake',
+    'commercial trucking intake',
+    'slip and fall intake',
+  ],
+  alternates: { canonical: '/case-types' },
+  openGraph: {
+    title: 'PI Intake by Case Type | Call Della',
+    description: 'Per-case-type PI intake protocols — auto, trucking, slip-fall.',
+    type: 'website',
+    url: 'https://calldella.com/case-types',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'PI case types' }],
+  },
+};
 import { Eyebrow, Headline } from '@/components/Typography';
 
 export default function CaseTypesIndex() {
@@ -13,7 +34,7 @@ export default function CaseTypesIndex() {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <Eyebrow>VERTICAL HUB</Eyebrow>
-          <Headline size={48} maxWidth={800}>Practice Area Protocols</Headline>
+          <Headline as="h1" size={48} maxWidth={800}>Practice Area Protocols</Headline>
           
           <div className="text-[17px] text-[var(--ink)] font-serif leading-[1.6] mt-6 mb-16">
             <p className="mb-4">

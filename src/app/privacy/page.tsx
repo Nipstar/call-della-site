@@ -1,13 +1,26 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'Privacy policy for Call Della — how we collect, store, and process call recordings, transcripts, and intake data on behalf of law firms.',
+  alternates: { canonical: '/privacy' },
+  robots: { index: true, follow: true },
+};
 
 export default function PrivacyPage() {
   return (
     <ArticleLayout
       eyebrow="LEGAL"
       title="Privacy Policy"
+      slug="/privacy"
+      breadcrumbs={[{ name: 'Privacy Policy', href: '/privacy' }]}
       author="Call Della Legal"
       date="1 MAY 2026"
+      datePublished="2026-05-01"
+      dateModified="2026-05-01"
       tldr={
         <>
           <p className="mb-2">Your data is yours. We do not sell your leads, and we do not use your confidential caller audio or transcripts to train public AI models.</p>

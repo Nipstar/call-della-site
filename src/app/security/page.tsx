@@ -1,13 +1,33 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+export const metadata: Metadata = {
+  title: 'Security & Data',
+  description:
+    'Security at Call Della — encryption at rest and in transit, SOC 2 Type II audit underway, BAA-ready for firms with PHI exposure, US-hosted, no model training on client data.',
+  alternates: { canonical: '/security' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: 'Security & Data | Call Della',
+    description: 'Encryption at rest and in transit, SOC 2 audit underway, BAA-ready, US-hosted.',
+    type: 'website',
+    url: 'https://calldella.com/security',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Call Della security' }],
+  },
+};
 
 export default function SecurityPage() {
   return (
     <ArticleLayout
       eyebrow="LEGAL"
       title="Security & Compliance"
+      slug="/security"
+      breadcrumbs={[{ name: 'Security & Compliance', href: '/security' }]}
       author="Call Della Operations"
       date="2 MAY 2026"
+      datePublished="2026-05-02"
+      dateModified="2026-05-02"
       tldr={
         <>
           <p className="mb-2">We build software for law firms. That means treating every byte of data as if it were subject to strict attorney-client privilege and HIPAA regulations.</p>

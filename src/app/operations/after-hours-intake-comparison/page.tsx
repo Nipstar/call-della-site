@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/operations/after-hours-intake-comparison';
+const TITLE = 'After-hours intake: In-house vs Human Service vs AI';
+const DESCRIPTION =
+  'Three ways PI firms handle nights and weekends: in-house graveyard shift, traditional answering service, or AI intake specialist. Cost, response time, and accuracy compared.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR B CLUSTER · OPERATIONS"
-      title="After-hours intake: In-house vs Human Service vs AI"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Operations', href: '/operations' },
+        { name: 'After-hours intake comparison', href: SLUG },
+      ]}
       author="Andy Norman"
       date="24 MAY 2026"
+      datePublished="2026-05-24"
+      dateModified="2026-05-24"
       tldr={
         <>
           <p className="mb-2">There are three ways PI firms handle nights and weekends: staffing a graveyard shift, hiring an answering service, or deploying an AI specialist.</p>
@@ -40,7 +68,7 @@ export default function Page() {
 
       <h2>3. AI Intake Specialists (Call Della)</h2>
       <p>
-        The modern approach leverages advanced conversational AI trained specifically on PI intake protocols.
+        The modern approach uses voice AI trained specifically on PI intake protocols.
       </p>
       <ul>
         <li><strong>Pros:</strong> Zero hold times. Infinite scalability (can handle 50 simultaneous calls during a major weather event). Costs a fraction of human services. Most importantly, an AI like Della strictly adheres to the legal script, successfully probing for statute of limitations and liability without breaking character.</li>

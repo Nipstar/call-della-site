@@ -1,9 +1,10 @@
-import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { stateData } from '@/data/states';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { CTAButton } from '@/components/CTAButton';
 
@@ -13,9 +14,36 @@ export function generateStaticParams() {
   }));
 }
 
-export default function StatePage({ params }: { params: { slug: string } }) {
-  const state = stateData.find(s => s.slug === params.slug);
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const state = stateData.find((s) => s.slug === slug);
+  if (!state) return {};
+  const title = `${state.name} Personal Injury Intake | Call Della`;
+  const description = `After-hours PI intake for ${state.name} firms. SOL, comparative negligence, no-fault status, damages caps — and how Della handles ${state.name} intake nightly.`;
+  const url = `https://calldella.com/states/${state.slug}`;
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: `/states/${state.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url,
+      images: [{ url: '/og-default.png', width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: ['/og-default.png'] },
+  };
+}
+
+export default async function StatePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const state = stateData.find(s => s.slug === slug);
+
   if (!state) {
     notFound();
   }
@@ -40,8 +68,14 @@ export default function StatePage({ params }: { params: { slug: string } }) {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+          <Breadcrumbs
+            items={[
+              { name: 'States', href: '/states' },
+              { name: state.name, href: `/states/${state.slug}` },
+            ]}
+          />
           <Eyebrow>LOCATION: {state.name.toUpperCase()}</Eyebrow>
-          <Headline size={44} maxWidth={800}>
+          <Headline as="h1" size={44} maxWidth={800}>
             Personal injury intake in {state.name}: After-hours coverage built for {state.name} PI firms
           </Headline>
           
@@ -69,13 +103,11 @@ export default function StatePage({ params }: { params: { slug: string } }) {
 
             <h2>Pricing for {state.name} firms</h2>
             <p>
-              We don't do regional pricing adjustments. Call Della offers the same transparent, flat-rate tiers nationally.
+              We don&apos;t do regional pricing adjustments. Call Della offers the same transparent, flat-rate tiers nationally — Standard, Practice, and Group, all month-to-month with no setup fees.
             </p>
-            <ul>
-              <li><strong>Standard:</strong> $297/month (Up to 400 minutes)</li>
-              <li><strong>Practice:</strong> $547/month (Up to 1000 minutes + SMS alerts)</li>
-              <li><strong>Group:</strong> Contact Sales (Custom volume)</li>
-            </ul>
+            <p>
+              <a href="/pricing">See full pricing →</a>
+            </p>
 
             <div className="my-12">
               <CTAButton primary>Book a discovery call</CTAButton>

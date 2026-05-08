@@ -1,5 +1,3 @@
-import React from 'react';
-import { Eyebrow, Headline } from '../Typography';
 import { Stamp } from '../Stamp';
 import { openBookingModal } from '../BookingModal';
 
@@ -10,14 +8,8 @@ export const Pricing = () => {
     { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"Custom", popular:false, features:["Everything in Practice","Multiple AI agents (different personas)","CRM webhook integration","Dedicated success manager","SLA guarantees"], cta:"Book a conversation" }
   ];
   return (
-    <section id="pricing" className="px-8 py-24 max-w-[1180px] mx-auto">
-      <Eyebrow center>PRICING</Eyebrow>
-      <Headline size={42} center maxWidth={680}>
-        Transparent monthly rates.<br/>
-        <span className="text-[var(--ink-soft)] italic">No setup fees. No multi-year contracts.</span>
-      </Headline>
-
-      <div className="mt-[60px] grid grid-cols-1 md:grid-cols-3 gap-[18px]">
+    <section id="pricing" className="px-8 pb-12 max-w-[1180px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
         {tiers.map(tier => (
           <div key={tier.name} className={`bg-[var(--paper)] p-[30px_26px] relative mt-3.5 ${tier.popular ? 'border-[2px] border-[var(--ink)]' : 'border-[1.5px] border-[var(--rule)]'}`}>
             <div 

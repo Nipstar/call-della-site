@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/intake-playbook/intake-red-flags-declining-cases';
+const TITLE = 'Intake red flags: When to politely decline a PI case';
+const DESCRIPTION =
+  "Accepting a bad case is exponentially more expensive than missing a good one. The Three T's of toxic intake: Timeline gaps, Treatment refusal, and The Last Lawyer syndrome.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR A CLUSTER · INTAKE PLAYBOOK"
-      title="Intake red flags: When to politely decline a PI case"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Intake playbook', href: '/intake-playbook' },
+        { name: 'Intake red flags', href: SLUG },
+      ]}
       author="Andy Norman"
       date="18 MAY 2026"
+      datePublished="2026-05-18"
+      dateModified="2026-05-18"
       tldr={
         <>
           <p className="mb-2">Accepting a bad case is exponentially more expensive than missing a good one. A high-performing intake team doesn't just sign cases; they actively protect the firm's balance sheet by filtering out toxic leads.</p>

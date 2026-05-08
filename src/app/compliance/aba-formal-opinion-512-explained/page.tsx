@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/compliance/aba-formal-opinion-512-explained';
+const TITLE = 'ABA Formal Opinion 512 explained for PI firms';
+const DESCRIPTION =
+  'ABA Formal Opinion 512 (July 2024) sets national guidelines for generative AI in legal practice. What it means for PI intake: competence, confidentiality, and disclosure.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR C CLUSTER · COMPLIANCE"
-      title="ABA Formal Opinion 512 explained for PI firms"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Compliance', href: '/compliance' },
+        { name: 'ABA Formal Opinion 512', href: SLUG },
+      ]}
       author="Andy Norman"
       date="28 MAY 2026"
+      datePublished="2026-05-28"
+      dateModified="2026-05-28"
       tldr={
         <>
           <p className="mb-2">In July 2024, the ABA issued Formal Opinion 512, establishing national guidelines for generative AI in legal practice.</p>

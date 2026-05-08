@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/compliance/attorney-client-privilege-ai-intake';
+const TITLE = 'Attorney-client privilege at the AI intake call: What counts';
+const DESCRIPTION =
+  'Does speaking to an AI break attorney-client privilege? Specific requirements to ensure early intake communications remain protected from discovery.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR C CLUSTER · COMPLIANCE"
-      title="Attorney-client privilege at the AI intake call: What counts"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Compliance', href: '/compliance' },
+        { name: 'Attorney-client privilege', href: SLUG },
+      ]}
       author="Andy Norman"
       date="26 MAY 2026"
+      datePublished="2026-05-26"
+      dateModified="2026-05-26"
       tldr={
         <>
           <p className="mb-2">Does speaking to an AI break attorney-client privilege? The short answer is no, provided the AI operates as an agent of the firm and strict confidentiality protocols are enforced.</p>

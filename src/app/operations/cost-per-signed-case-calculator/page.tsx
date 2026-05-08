@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/operations/cost-per-signed-case-calculator';
+const TITLE = 'Cost per signed case: How to actually calculate it';
+const DESCRIPTION =
+  'Most PI firms track Cost Per Lead and miss Cost Per Signed Case. The full formula: marketing, intake payroll, software, and the opportunity cost of mis-triaged leads.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR B CLUSTER · OPERATIONS"
-      title="Cost per signed case: How to actually calculate it"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Operations', href: '/operations' },
+        { name: 'Cost per signed case', href: SLUG },
+      ]}
       author="Andy Norman"
       date="20 MAY 2026"
+      datePublished="2026-05-20"
+      dateModified="2026-05-20"
       tldr={
         <>
           <p className="mb-2">Most PI firms calculate Cost Per Lead (CPL) and ignore Cost Per Signed Case. This masks the catastrophic operational drag of bad intake.</p>

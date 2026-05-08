@@ -1,70 +1,55 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PaperTexture } from "@/components/PaperTexture";
-import { Hero } from "@/components/sections/Hero";
-import { Problem } from "@/components/sections/Problem";
-import { MeetDella } from "@/components/sections/MeetDella";
-import { MorningBrief } from "@/components/sections/MorningBrief";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Pricing } from "@/components/sections/Pricing";
-import { Trust } from "@/components/sections/Trust";
-import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+import { HomeHero } from "@/components/sections/HomeHero";
+import { VerticalPicker } from "@/components/sections/VerticalPicker";
+import { HowDellaWorks } from "@/components/sections/HowDellaWorks";
+import { SecurityStrip } from "@/components/sections/SecurityStrip";
+import { PricingTeaser } from "@/components/sections/PricingTeaser";
+import { BrandFAQ } from "@/components/sections/BrandFAQ";
+import { HomeFinalCTA } from "@/components/sections/HomeFinalCTA";
 import { BookingModal } from "@/components/BookingModal";
 
-export default function Home() {
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Legal Intake Service",
-    "provider": {
-      "@type": "Organization",
-      "name": "Call Della"
-    },
-    "description": "AI-powered after-hours intake specialist for personal injury law firms.",
-    "areaServed": "US",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Intake Plans",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Standard Plan"
-          },
-          "price": "297",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Practice Plan"
-          },
-          "price": "547",
-          "priceCurrency": "USD"
-        }
-      ]
-    }
-  };
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "Della: After-Hours AI Intake for Personal Injury, Criminal Defense, and Immigration Firms",
+  },
+  description:
+    "Della answers your firm's overnight phone, qualifies every caller, and delivers a triage-ready dossier by dawn. Three vertical intake flows. Month-to-month, no setup fees.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "https://calldella.com/",
+    title: "Della: After-Hours AI Intake for Law Firms",
+    description:
+      "Della answers your firm's overnight phone and delivers a triage-ready dossier by dawn.",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "Call Della" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Della: After-Hours AI Intake for Law Firms",
+    description:
+      "Della answers your firm's overnight phone and delivers a triage-ready dossier by dawn.",
+    images: ["/og-default.png"],
+  },
+};
 
+export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <PaperTexture />
       <div className="relative z-20 flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
-          <Hero />
-          <Problem />
-          <MeetDella />
-          <MorningBrief />
-          <HowItWorks />
-          <Pricing />
-          <Trust />
-          <FAQ />
-          <FinalCTA />
+          <HomeHero />
+          <VerticalPicker />
+          <HowDellaWorks />
+          <SecurityStrip />
+          <PricingTeaser />
+          <BrandFAQ />
+          <HomeFinalCTA />
         </main>
         <Footer />
         <BookingModal />

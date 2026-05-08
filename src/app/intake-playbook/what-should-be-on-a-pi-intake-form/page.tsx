@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/intake-playbook/what-should-be-on-a-pi-intake-form';
+const TITLE = 'What exactly should be on a personal injury intake form?';
+const DESCRIPTION =
+  'A PI intake form is a triage instrument: liability, damages, viable recovery source. SOL exposure, comparative-negligence triggers, immediate medical intervention details — without overwhelming the caller.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR A CLUSTER · INTAKE PLAYBOOK"
-      title="What exactly should be on a personal injury intake form?"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Intake playbook', href: '/intake-playbook' },
+        { name: 'PI intake form', href: SLUG },
+      ]}
       author="Andy Norman"
       date="14 MAY 2026"
+      datePublished="2026-05-14"
+      dateModified="2026-05-14"
       tldr={
         <>
           <p className="mb-2">A personal injury intake form shouldn't be a generic questionnaire. It is a triage instrument designed to establish three things instantly: liability, damages, and viable recovery source.</p>

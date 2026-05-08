@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/operations/missed-call-cost-calculator';
+const TITLE = 'The missed-call cost calculator: A math walkthrough';
+const DESCRIPTION =
+  "A missed call at 2 a.m. isn't a missed lead — it's a structural leak in marketing ROI. The math on what a 15% after-hours missed-call rate costs a 5-attorney PI firm.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR B CLUSTER · OPERATIONS"
-      title="The missed call cost calculator: A math walkthrough"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Operations', href: '/operations' },
+        { name: 'Missed-call cost', href: SLUG },
+      ]}
       author="Andy Norman"
       date="22 MAY 2026"
+      datePublished="2026-05-22"
+      dateModified="2026-05-22"
       tldr={
         <>
           <p className="mb-2">A missed call at 2 a.m. isn't just a missed lead; it's a structural leak in your marketing ROI.</p>

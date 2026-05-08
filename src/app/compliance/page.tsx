@@ -1,8 +1,29 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+
+export const metadata: Metadata = {
+  title: 'AI Legal Intake Compliance',
+  description:
+    'ABA Formal Opinion 512, attorney-client privilege, and HIPAA at intake. Compliance guidance for law firms using voice AI for after-hours intake.',
+  keywords: [
+    'AI legal intake compliance',
+    'ABA Formal Opinion 512',
+    'attorney-client privilege AI',
+    'HIPAA intake',
+  ],
+  alternates: { canonical: '/compliance' },
+  openGraph: {
+    title: 'AI Legal Intake Compliance | Call Della',
+    description: 'ABA 512, privilege, HIPAA — compliance guidance for AI legal intake.',
+    type: 'website',
+    url: 'https://calldella.com/compliance',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Compliance' }],
+  },
+};
 
 export default function PillarCIndex() {
   const posts = [
@@ -30,7 +51,7 @@ export default function PillarCIndex() {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <Eyebrow>PILLAR C · CORE GUIDE</Eyebrow>
-          <Headline size={48} maxWidth={800}>Privilege, Compliance & Trust</Headline>
+          <Headline as="h1" size={48} maxWidth={800}>Privilege, Compliance & Trust</Headline>
           
           <div className="text-[17px] text-[var(--ink)] font-serif leading-[1.6] mt-6 mb-16">
             <p className="mb-4">

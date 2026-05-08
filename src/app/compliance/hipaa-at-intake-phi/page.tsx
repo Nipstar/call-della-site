@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/compliance/hipaa-at-intake-phi';
+const TITLE = "HIPAA at intake: What counts as PHI, what doesn't";
+const DESCRIPTION =
+  'Is a PI law firm covered by HIPAA during a cold intake call? PHI boundary lines, when a Business Associate Agreement (BAA) is required, and what triggers it.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR C CLUSTER · COMPLIANCE"
-      title="HIPAA at intake: What counts as PHI, what doesn't"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Compliance', href: '/compliance' },
+        { name: 'HIPAA at intake', href: SLUG },
+      ]}
       author="Andy Norman"
       date="30 MAY 2026"
+      datePublished="2026-05-30"
+      dateModified="2026-05-30"
       tldr={
         <>
           <p className="mb-2">Personal injury intake inherently involves medical data. But is a law firm covered by HIPAA during a cold intake call?</p>

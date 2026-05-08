@@ -1,8 +1,29 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+
+export const metadata: Metadata = {
+  title: 'Law Firm Intake Operations',
+  description:
+    'Cost-per-signed-case, missed-call cost, and after-hours intake comparison. Operations playbook for personal injury law firm intake managers.',
+  keywords: [
+    'law firm intake operations',
+    'cost per signed case',
+    'missed call cost',
+    'after hours legal intake comparison',
+  ],
+  alternates: { canonical: '/operations' },
+  openGraph: {
+    title: 'Law Firm Intake Operations | Call Della',
+    description: 'Cost-per-signed-case, missed-call cost, intake comparison.',
+    type: 'website',
+    url: 'https://calldella.com/operations',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Operations' }],
+  },
+};
 
 export default function PillarBIndex() {
   const posts = [
@@ -30,7 +51,7 @@ export default function PillarBIndex() {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <Eyebrow>PILLAR B · CORE GUIDE</Eyebrow>
-          <Headline size={48} maxWidth={800}>Intake Operations & ROI</Headline>
+          <Headline as="h1" size={48} maxWidth={800}>Intake Operations & ROI</Headline>
           
           <div className="text-[17px] text-[var(--ink)] font-serif leading-[1.6] mt-6 mb-16">
             <p className="mb-4">

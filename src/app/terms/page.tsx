@@ -1,13 +1,26 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description:
+    'Terms of service for Call Della — voice AI intake software for law firms. Service scope, no legal advice, no attorney-client relationship.',
+  alternates: { canonical: '/terms' },
+  robots: { index: true, follow: true },
+};
 
 export default function TermsPage() {
   return (
     <ArticleLayout
       eyebrow="LEGAL"
       title="Terms of Service"
+      slug="/terms"
+      breadcrumbs={[{ name: 'Terms of Service', href: '/terms' }]}
       author="Call Della Legal"
       date="1 MAY 2026"
+      datePublished="2026-05-01"
+      dateModified="2026-05-01"
       tldr={
         <>
           <p className="mb-2">These Terms of Service govern your use of the Call Della AI intake platform.</p>
@@ -22,7 +35,7 @@ export default function TermsPage() {
 
       <h2>2. Nature of the Service</h2>
       <p>
-        Call Della provides an automated, AI-powered conversational interface designed to collect factual intake information from individuals seeking legal representation. 
+        Call Della provides an automated voice AI conversational interface designed to collect factual intake information from individuals seeking legal representation.
       </p>
       <ul>
         <li><strong>Not a Law Firm:</strong> Call Della is a software-as-a-service (SaaS) provider. We are not a law firm.</li>

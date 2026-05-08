@@ -1,8 +1,29 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+
+export const metadata: Metadata = {
+  title: 'Personal Injury Intake Playbook',
+  description:
+    'How to write a PI intake script, what to capture on a PI intake form, and the red flags that should kill a case at intake. Practitioner guide for PI firms.',
+  keywords: [
+    'PI intake playbook',
+    'personal injury intake script',
+    'PI intake form',
+    'intake red flags',
+  ],
+  alternates: { canonical: '/intake-playbook' },
+  openGraph: {
+    title: 'PI Intake Playbook | Call Della',
+    description: 'PI intake scripts, forms, and red flags for personal injury firms.',
+    type: 'website',
+    url: 'https://calldella.com/intake-playbook',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Intake Playbook' }],
+  },
+};
 
 export default function PillarAIndex() {
   const posts = [
@@ -30,7 +51,7 @@ export default function PillarAIndex() {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <Eyebrow>PILLAR A · CORE GUIDE</Eyebrow>
-          <Headline size={48} maxWidth={800}>The PI Intake Playbook</Headline>
+          <Headline as="h1" size={48} maxWidth={800}>The PI Intake Playbook</Headline>
           
           <div className="text-[17px] text-[var(--ink)] font-serif leading-[1.6] mt-6 mb-16">
             <p className="mb-4">

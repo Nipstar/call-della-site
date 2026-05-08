@@ -1,9 +1,10 @@
-import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { caseData } from '@/data/cases';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { CTAButton } from '@/components/CTAButton';
 
@@ -13,9 +14,36 @@ export function generateStaticParams() {
   }));
 }
 
-export default function CaseTypePage({ params }: { params: { slug: string } }) {
-  const caseType = caseData.find(c => c.slug === params.slug);
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const caseType = caseData.find((c) => c.slug === slug);
+  if (!caseType) return {};
+  const title = `${caseType.name} Intake Protocol | Call Della`;
+  const description = `Della's intake protocol for ${caseType.name.toLowerCase()}. Statute of limitations context, liability + insurance considerations, and the questions Della asks every caller.`;
+  const url = `https://calldella.com/case-types/${caseType.slug}`;
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: `/case-types/${caseType.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url,
+      images: [{ url: '/og-default.png', width: 1200, height: 630, alt: title }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: ['/og-default.png'] },
+  };
+}
+
+export default async function CaseTypePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const caseType = caseData.find(c => c.slug === slug);
+
   if (!caseType) {
     notFound();
   }
@@ -40,8 +68,14 @@ export default function CaseTypePage({ params }: { params: { slug: string } }) {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+          <Breadcrumbs
+            items={[
+              { name: 'Case types', href: '/case-types' },
+              { name: caseType.name, href: `/case-types/${caseType.slug}` },
+            ]}
+          />
           <Eyebrow>CASE TYPE PROTOCOL</Eyebrow>
-          <Headline size={44} maxWidth={800}>
+          <Headline as="h1" size={44} maxWidth={800}>
             Automated intake software for {caseType.name.toLowerCase()}
           </Headline>
           
@@ -69,11 +103,15 @@ export default function CaseTypePage({ params }: { params: { slug: string } }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
               <div className="border-[1.5px] border-[var(--rule)] p-6">
-                <div className="text-[11px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-4 text-emerald-700">✓ STRONG INTAKE</div>
+                <div className="text-[11px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-4 text-emerald-700">
+                  <span aria-hidden="true">✓ </span>STRONG INTAKE
+                </div>
                 <p className="text-[15px] m-0">{caseType.goodVsBad.good}</p>
               </div>
               <div className="border-[1.5px] border-[var(--rule)] p-6">
-                <div className="text-[11px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-4 text-red-800">✕ WEAK INTAKE</div>
+                <div className="text-[11px] font-bold text-[var(--ink-soft)] font-mono tracking-[0.18em] mb-4 text-red-800">
+                  <span aria-hidden="true">✕ </span>WEAK INTAKE
+                </div>
                 <p className="text-[15px] m-0">{caseType.goodVsBad.bad}</p>
               </div>
             </div>

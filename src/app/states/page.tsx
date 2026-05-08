@@ -1,8 +1,28 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { stateData } from '@/data/states';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
+
+export const metadata: Metadata = {
+  title: 'PI Intake by State',
+  description:
+    'State-by-state guides to personal injury intake — statute of limitations, comparative negligence, no-fault status, and damages caps in TX, FL, CA, NY, IL, GA.',
+  keywords: [
+    'PI intake by state',
+    'state SOL personal injury',
+    'comparative negligence by state',
+  ],
+  alternates: { canonical: '/states' },
+  openGraph: {
+    title: 'PI Intake by State | Call Della',
+    description: 'State-by-state PI intake guides — SOL, comparative negligence, damages caps.',
+    type: 'website',
+    url: 'https://calldella.com/states',
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'PI by state' }],
+  },
+};
 import { Eyebrow, Headline } from '@/components/Typography';
 
 export default function StatesIndex() {
@@ -13,7 +33,7 @@ export default function StatesIndex() {
         <Header />
         <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
           <Eyebrow>LOCATION HUB</Eyebrow>
-          <Headline size={48} maxWidth={800}>State-Specific Intake Protocols</Headline>
+          <Headline as="h1" size={48} maxWidth={800}>State-Specific Intake Protocols</Headline>
           
           <div className="text-[17px] text-[var(--ink)] font-serif leading-[1.6] mt-6 mb-16">
             <p className="mb-4">

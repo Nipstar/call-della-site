@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 
-export const AudioPlayer = ({ src = "/placeholder.mp3" }: { src?: string }) => {
+export const AudioPlayer = ({ src = "/placeholder.mp3", label = "EVIDENCE TAPE · INT-04421" }: { src?: string; label?: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -53,7 +53,7 @@ export const AudioPlayer = ({ src = "/placeholder.mp3" }: { src?: string }) => {
   return (
     <div className="w-full max-w-[440px] bg-[var(--paper-edge)] border-[1.5px] border-[var(--rule)] p-[16px_20px] relative shadow-[4px_4px_0_var(--rule)]">
       <div className="absolute top-[-1px] right-[20px] bg-[var(--paper-deep)] border-[1.5px] border-[var(--rule)] border-t-0 px-2.5 py-[3px] text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.16em] font-mono uppercase">
-        EVIDENCE TAPE · INT-04421
+        {label}
       </div>
       
       <audio 
@@ -65,17 +65,18 @@ export const AudioPlayer = ({ src = "/placeholder.mp3" }: { src?: string }) => {
       />
       
       <div className="flex items-center gap-5 mt-2.5">
-        <button 
+        <button
           onClick={togglePlay}
+          aria-label={isPlaying ? 'Pause demo intake recording' : 'Play demo intake recording'}
           className="w-11 h-11 shrink-0 rounded-full border-[1.5px] border-[var(--ink)] flex items-center justify-center bg-[var(--paper)] cursor-pointer hover:bg-[var(--paper-deep)] transition-colors"
         >
           {isPlaying ? (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--stamp-red)" stroke="var(--stamp-red)" strokeWidth="1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--stamp-red)" stroke="var(--stamp-red)" strokeWidth="1.5" aria-hidden="true">
               <rect x="6" y="4" width="4" height="16" />
               <rect x="14" y="4" width="4" height="16" />
             </svg>
           ) : (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--ink)" stroke="var(--ink)" strokeWidth="1.5" className="ml-1">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--ink)" stroke="var(--ink)" strokeWidth="1.5" className="ml-1" aria-hidden="true">
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
           )}

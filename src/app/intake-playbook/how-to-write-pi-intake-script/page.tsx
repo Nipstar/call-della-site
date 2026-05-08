@@ -1,13 +1,41 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+
+const SLUG = '/intake-playbook/how-to-write-pi-intake-script';
+const TITLE = "How to write a PI intake script that doesn't sound like an interrogation";
+const DESCRIPTION =
+  'The four-stage E.F.F.E. framework for personal injury intake scripts: Empathy, Facts, Fault, Evidence. Balance compassion with the fact-finding firms actually need.';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SLUG },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: `https://calldella.com${SLUG}`,
+    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },
+};
 
 export default function Page() {
   return (
     <ArticleLayout
       eyebrow="PILLAR A CLUSTER · INTAKE PLAYBOOK"
-      title="How to write a PI intake script (that doesn't sound like an interrogation)"
+      title={TITLE}
+      description={DESCRIPTION}
+      slug={SLUG}
+      breadcrumbs={[
+        { name: 'Intake playbook', href: '/intake-playbook' },
+        { name: 'How to write a PI intake script', href: SLUG },
+      ]}
       author="Andy Norman"
       date="16 MAY 2026"
+      datePublished="2026-05-16"
+      dateModified="2026-05-16"
       tldr={
         <>
           <p className="mb-2">A great intake script balances empathy with aggressive fact-finding. If your script feels like an interrogation, traumatised callers will hang up. If it's too conversational, you'll miss the statute of limitations exposure.</p>

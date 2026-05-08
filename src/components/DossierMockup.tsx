@@ -1,39 +1,64 @@
 import React from 'react';
 import { Stamp } from './Stamp';
 import { Rule } from './Rule';
+import type { Vertical } from '@/lib/verticals';
 
 interface DossierMockupProps {
   variant: 'hero' | 'dashboard';
+  data?: Vertical['heroDossier'];
 }
 
-export const DossierMockup = ({ variant }: DossierMockupProps) => {
+const defaultHeroData: NonNullable<Vertical['heroDossier']> = {
+  intakeId: 'INT-04421',
+  timestamp: '04 MAY 2026 · 23:42 CDT',
+  callerName: 'Maria Gonzalez',
+  duration: '4M 18S',
+  agentTag: 'DELLA',
+  matterLine: 'RE: REAR-END COLLISION, I-90',
+  quote:
+    '"I was stopped at a red light and this guy just ploughed into me. I\'ve been in pain since and don\'t know what to do."',
+  actionLine: 'High-value intake. ER visit confirmed, fault admitted at scene.',
+};
+
+export const DossierMockup = ({ variant, data }: DossierMockupProps) => {
+  const ariaLabel =
+    variant === 'hero'
+      ? 'Sample Della intake report — caller name, phone number, incident summary, urgency stamp.'
+      : 'Sample morning dossier dashboard — overnight calls sorted by urgency tier with caller details and recommended actions.';
+
   if (variant === 'hero') {
+    const d = data ?? defaultHeroData;
     return (
-      <div className="relative py-[30px] w-full max-w-lg mx-auto">
+      <div role="img" aria-label={ariaLabel} className="relative py-[30px] w-full max-w-lg mx-auto">
         <div className="bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[22px_26px] shadow-[6px_6px_0_var(--rule)] rotate-[1.5deg] relative">
           <div className="absolute top-[-1px] left-[22px] bg-[var(--paper-edge)] border-[1.5px] border-[var(--rule)] border-b-0 px-3 py-[3px] text-[10px] font-bold text-[var(--ink-soft)] tracking-[0.14em] font-mono -translate-y-full">
-            INTAKE REPORT · INT-04421
+            INTAKE REPORT · {d.intakeId}
           </div>
           <div className="flex justify-between items-start mb-3">
             <div>
-              <div className="text-[11px] text-[var(--ink-faint)] font-mono tracking-[0.06em]">04 MAY 2026 · 23:42 CDT</div>
-              <div className="text-[22px] font-semibold text-[var(--ink)] font-serif mt-1 tracking-[-0.015em]">Maria Gonzalez</div>
+              <div className="text-[11px] text-[var(--ink-faint)] font-mono tracking-[0.06em]">{d.timestamp}</div>
+              <div className="text-[22px] font-semibold text-[var(--ink)] font-serif mt-1 tracking-[-0.015em]">{d.callerName}</div>
             </div>
             <div className="-rotate-3"><Stamp kind="urgent" size="lg"/></div>
           </div>
-          <div className="flex gap-1.5 mb-3.5">
+          <div className="flex flex-wrap gap-1.5 mb-3.5 items-center">
             <Stamp kind="new"/>
-            <span className="text-[10px] text-[var(--ink-soft)] font-mono px-[7px] py-[3px] tracking-[0.08em]">4M 18S · CHLOE</span>
+            <span className="text-[10px] text-[var(--ink-soft)] font-mono px-[7px] py-[3px] tracking-[0.08em]">{d.duration} · {d.agentTag}</span>
+            {d.languageTag && (
+              <span className="text-[9.5px] text-[var(--stamp-blue)] font-mono px-[6px] py-[2px] tracking-[0.1em] border border-[var(--stamp-blue)]">
+                {d.languageTag}
+              </span>
+            )}
           </div>
           <div className="border-y border-[var(--rule-soft)] py-2.5 mb-3.5 text-[11px] font-mono text-[var(--ink-soft)] tracking-[0.06em]">
-            RE: REAR-END COLLISION, I-90
+            {d.matterLine}
           </div>
           <p className="text-[13.5px] text-[var(--ink)] font-serif italic leading-[1.55] p-[12px_14px] bg-[var(--paper-edge)] border-l-[3px] border-[var(--rule)] m-0">
-            "I was stopped at a red light and this guy just ploughed into me. I've been in pain since and don't know what to do."
+            {d.quote}
           </p>
           <div className="mt-3.5 py-2.5 border-t-[2px] border-double border-[var(--stamp-red)] text-[12px] font-serif text-[var(--ink)] leading-[1.5]">
             <span className="font-mono text-[9.5px] font-bold text-[var(--stamp-red)] tracking-[0.18em] block mb-1.5 uppercase">ACTION REQUIRED</span>
-            High-value intake. ER visit confirmed, fault admitted at scene.
+            {d.actionLine}
           </div>
         </div>
       </div>
@@ -42,7 +67,7 @@ export const DossierMockup = ({ variant }: DossierMockupProps) => {
 
   // Dashboard Variant
   return (
-    <div className="mt-[60px] bg-[var(--paper)] border-[1.5px] border-[var(--rule)] shadow-[8px_8px_0_var(--rule)] overflow-hidden w-full">
+    <div role="img" aria-label={ariaLabel} className="mt-[60px] bg-[var(--paper)] border-[1.5px] border-[var(--rule)] shadow-[8px_8px_0_var(--rule)] overflow-hidden w-full">
       <div className="bg-[var(--paper-edge)] border-b border-[var(--rule)] px-4 py-2.5 flex items-center gap-2.5">
         <div className="flex gap-1.5">
           {['var(--stamp-red)', 'var(--stamp-mustard)', 'var(--stamp-green)'].map(c => (
