@@ -9,6 +9,7 @@ import { BrandFAQ } from '@/components/sections/BrandFAQ';
 import { HomeFinalCTA } from '@/components/sections/HomeFinalCTA';
 import { BookingModal } from '@/components/BookingModal';
 import { Eyebrow, Headline, Body } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'How Della works',
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: 'How Della works | Call Della',
     description: "Four things happen on every call. Here's the mechanic.",
     type: 'website',
-    url: 'https://calldella.com/how-it-works',
+    url: `${SITE_URL}/how-it-works`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'How Della works' }],
   },
   twitter: {

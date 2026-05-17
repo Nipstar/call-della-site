@@ -2,10 +2,11 @@ import { MetadataRoute } from 'next';
 import { verticalList } from '@/lib/verticals';
 import { stateData } from '@/data/states';
 import { caseData } from '@/data/cases';
+import { SITE_URL } from '@/lib/config';
 
 export const dynamic = 'force-static';
 
-const BASE = 'https://calldella.com';
+const BASE = SITE_URL;
 
 const compliancePosts = [
   'aba-formal-opinion-512-explained',

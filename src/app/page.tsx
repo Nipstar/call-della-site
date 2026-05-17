@@ -10,6 +10,7 @@ import { PricingTeaser } from "@/components/sections/PricingTeaser";
 import { BrandFAQ } from "@/components/sections/BrandFAQ";
 import { HomeFinalCTA } from "@/components/sections/HomeFinalCTA";
 import { BookingModal } from "@/components/BookingModal";
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: "https://calldella.com/",
+    url: `${SITE_URL}/`,
     title: "Della: After-Hours AI Intake for Law Firms",
     description:
       "Della answers your firm's overnight phone and delivers a triage-ready dossier by dawn.",

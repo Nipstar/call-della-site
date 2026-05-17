@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT_EMAIL } from "@/lib/config";
 
 export const Footer = () => (
   <footer className="px-8 pt-[60px] pb-8 border-t border-[var(--rule)]">
@@ -37,7 +38,7 @@ export const Footer = () => (
           <a href="/intake-playbook" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Intake Playbook</a>
           <a href="/operations" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Operations</a>
           <a href="/compliance" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">Compliance</a>
-          <a href="mailto:hello@calldella.com" className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">hello@calldella.com</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-[13.5px] text-[var(--ink)] font-serif no-underline hover:underline decoration-[var(--rule-soft)] underline-offset-4">{CONTACT_EMAIL}</a>
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Law Firm Intake Operations',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Law Firm Intake Operations | Call Della',
     description: 'Cost-per-signed-case, missed-call cost, intake comparison.',
     type: 'website',
-    url: 'https://calldella.com/operations',
+    url: `${SITE_URL}/operations`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Operations' }],
   },
 };

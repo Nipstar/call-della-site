@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'AI Legal Intake Compliance',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: 'AI Legal Intake Compliance | Call Della',
     description: 'ABA 512, privilege, HIPAA — compliance guidance for AI legal intake.',
     type: 'website',
-    url: 'https://calldella.com/compliance',
+    url: `${SITE_URL}/compliance`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Compliance' }],
   },
 };

@@ -20,11 +20,12 @@ export const metadata: Metadata = {
     title: 'PI Intake by Case Type | Call Della',
     description: 'Per-case-type PI intake protocols — auto, trucking, slip-fall.',
     type: 'website',
-    url: 'https://calldella.com/case-types',
+    url: `${SITE_URL}/case-types`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'PI case types' }],
   },
 };
 import { Eyebrow, Headline } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export default function CaseTypesIndex() {
   return (

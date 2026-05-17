@@ -9,7 +9,7 @@ import { BookingModal } from '@/components/BookingModal';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline, Body } from '@/components/Typography';
 
-const SITE_URL = 'https://calldella.com';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Pricing — Three plans, month-to-month',

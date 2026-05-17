@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { VerticalLanderShell } from '@/components/VerticalLanderShell';
 import { verticals } from '@/lib/verticals';
+import { SITE_URL } from '@/lib/config';
 
 const v = verticals['immigration'];
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     description: v.meta.description,
     images: [{ url: v.meta.ogImage, width: 1200, height: 630, alt: v.name }],
     type: 'website',
-    url: `https://calldella.com/${v.slug}`,
+    url: `${SITE_URL}/${v.slug}`,
   },
   twitter: {
     card: 'summary_large_image',

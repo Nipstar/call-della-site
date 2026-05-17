@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Security & Data',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Security & Data | Call Della',
     description: 'Encryption at rest and in transit, SOC 2 audit underway, BAA-ready, US-hosted.',
     type: 'website',
-    url: 'https://calldella.com/security',
+    url: `${SITE_URL}/security`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Call Della security' }],
   },
 };

@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTAButton } from '@/components/CTAButton';
 import { Eyebrow, Headline, Body } from '@/components/Typography';
 
-const SITE_URL = 'https://calldella.com';
+import { SITE_URL, CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: { absolute: 'About Call Della' },
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <Body size={15}>
               Bio coming soon. In the meantime, the fastest way to learn what Della does is to{' '}
               <a href="/personal-injury#verticals" className="underline">try a demo</a> or{' '}
-              <a href="mailto:hello@calldella.com" className="underline">email us</a>.
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline">email us</a>.
             </Body>
           </div>
 

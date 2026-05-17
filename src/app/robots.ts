@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/config';
 
 export const dynamic = 'force-static';
 
@@ -19,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Bytespider', allow: '/' },
       { userAgent: 'Diffbot', allow: '/' },
     ],
-    sitemap: 'https://calldella.com/sitemap.xml',
-    host: 'https://calldella.com',
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

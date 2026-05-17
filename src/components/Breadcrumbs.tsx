@@ -1,6 +1,6 @@
-type Crumb = { name: string; href: string };
+import { SITE_URL } from '@/lib/config';
 
-const SITE_URL = 'https://calldella.com';
+type Crumb = { name: string; href: string };
 
 type Props = {
   items: Crumb[];

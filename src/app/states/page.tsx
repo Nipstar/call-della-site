@@ -19,11 +19,12 @@ export const metadata: Metadata = {
     title: 'PI Intake by State | Call Della',
     description: 'State-by-state PI intake guides — SOL, comparative negligence, damages caps.',
     type: 'website',
-    url: 'https://calldella.com/states',
+    url: `${SITE_URL}/states`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'PI by state' }],
   },
 };
 import { Eyebrow, Headline } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export default function StatesIndex() {
   return (

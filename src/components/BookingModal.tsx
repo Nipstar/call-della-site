@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from 'react';
+import { CALCOM_URL } from '@/lib/config';
 
 export const BookingModal = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -42,7 +43,7 @@ export const BookingModal = () => {
           </button>
         </div>
         <iframe
-          src="https://cal.com/antek-automation/30min-gmail?embed=true&hideEventTypeDetails=false&layout=month_view"
+          src={`${CALCOM_URL}?embed=true&hideEventTypeDetails=false&layout=month_view`}
           title="Book a discovery call with Call Della"
           className="flex-grow w-full border-0 bg-[var(--paper)]"
           allow="camera; microphone; autoplay; encrypted-media; fullscreen"

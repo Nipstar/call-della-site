@@ -16,9 +16,8 @@ import { VerticalFAQ } from './sections/VerticalFAQ';
 import { DemoCallout } from './sections/DemoCallout';
 import { BookingModal } from './BookingModal';
 import { Breadcrumbs } from './Breadcrumbs';
+import { SITE_URL } from '@/lib/config';
 import type { Vertical } from '@/lib/verticals';
-
-const SITE_URL = 'https://calldella.com';
 
 type Props = {
   vertical: Vertical;

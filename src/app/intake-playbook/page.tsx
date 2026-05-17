@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Eyebrow, Headline } from '@/components/Typography';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Personal Injury Intake Playbook',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: 'PI Intake Playbook | Call Della',
     description: 'PI intake scripts, forms, and red flags for personal injury firms.',
     type: 'website',
-    url: 'https://calldella.com/intake-playbook',
+    url: `${SITE_URL}/intake-playbook`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Intake Playbook' }],
   },
 };

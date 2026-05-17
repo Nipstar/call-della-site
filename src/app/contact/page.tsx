@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { Eyebrow, Headline, Body } from '@/components/Typography';
 
-const SITE_URL = 'https://calldella.com';
+import { SITE_URL, CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Contact Call Della',
@@ -42,7 +42,7 @@ const contactPageSchema = {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      email: 'hello@calldella.com',
+      email: CONTACT_EMAIL,
       areaServed: 'US',
       availableLanguage: ['English', 'Spanish'],
     },
@@ -66,7 +66,7 @@ export default function ContactPage() {
           <div className="mt-8">
             <Body size={17}>
               Twenty-minute discovery call. No pitch deck. We&rsquo;ll walk you through the dossier, let you hear Della work, and answer questions. Fill the form below or email{' '}
-              <a href="mailto:hello@calldella.com" className="underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]">hello@calldella.com</a>.
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]">{CONTACT_EMAIL}</a>.
             </Body>
           </div>
 

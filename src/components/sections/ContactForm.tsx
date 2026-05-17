@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-
-const WEBHOOK_URL = 'https://antekauto.app.n8n.cloud/webhook-test/call-della';
+import { N8N_WEBHOOK_URL, CONTACT_EMAIL } from '@/lib/config';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -37,7 +36,7 @@ export const ContactForm = () => {
     setErrorMsg('');
 
     try {
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(N8N_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -58,7 +57,7 @@ export const ContactForm = () => {
           MESSAGE RECEIVED
         </div>
         <p className="text-[18px] text-[var(--ink)] font-serif leading-[1.55] m-0">
-          Got it. We&rsquo;ll be in touch within one business day — usually faster. If this is urgent, email <a href="mailto:hello@calldella.com" className="underline">hello@calldella.com</a>.
+          Got it. We&rsquo;ll be in touch within one business day — usually faster. If this is urgent, email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
         </p>
       </div>
     );
@@ -139,7 +138,7 @@ export const ContactForm = () => {
 
       {status === 'error' && (
         <div className="px-4 py-3 border-[1.5px] border-[var(--stamp-red)] bg-[var(--paper-edge)] text-[13px] font-mono text-[var(--stamp-red)] tracking-[0.06em]">
-          Submission failed — {errorMsg}. Email <a href="mailto:hello@calldella.com" className="underline">hello@calldella.com</a> directly.
+          Submission failed — {errorMsg}. Email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a> directly.
         </div>
       )}
 

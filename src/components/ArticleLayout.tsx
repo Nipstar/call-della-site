@@ -5,7 +5,7 @@ import { PaperTexture } from './PaperTexture';
 import { Breadcrumbs } from './Breadcrumbs';
 import { Eyebrow } from './Typography';
 
-const SITE_URL = 'https://calldella.com';
+import { SITE_URL } from '@/lib/config';
 
 type Props = {
   eyebrow: string;

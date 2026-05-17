@@ -7,6 +7,7 @@ import { PaperTexture } from '@/components/PaperTexture';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { CTAButton } from '@/components/CTAButton';
+import { SITE_URL } from '@/lib/config';
 
 export function generateStaticParams() {
   return stateData.map((state) => ({
@@ -24,7 +25,7 @@ export async function generateMetadata({
   if (!state) return {};
   const title = `${state.name} Personal Injury Intake | Call Della`;
   const description = `After-hours PI intake for ${state.name} firms. SOL, comparative negligence, no-fault status, damages caps — and how Della handles ${state.name} intake nightly.`;
-  const url = `https://calldella.com/states/${state.slug}`;
+  const url = `${SITE_URL}/states/${state.slug}`;
   return {
     title: { absolute: title },
     description,

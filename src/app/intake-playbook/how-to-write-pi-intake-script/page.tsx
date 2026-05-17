@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
+import { SITE_URL } from '@/lib/config';
 
 const SLUG = '/intake-playbook/how-to-write-pi-intake-script';
 const TITLE = "How to write a PI intake script that doesn't sound like an interrogation";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     type: 'article',
-    url: `https://calldella.com${SLUG}`,
+    url: `${SITE_URL}${SLUG}`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: TITLE }],
   },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: ['/og-default.png'] },

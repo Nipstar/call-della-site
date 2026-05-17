@@ -7,6 +7,7 @@ import { PaperTexture } from '@/components/PaperTexture';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { CTAButton } from '@/components/CTAButton';
+import { SITE_URL } from '@/lib/config';
 
 export function generateStaticParams() {
   return caseData.map((c) => ({
@@ -24,7 +25,7 @@ export async function generateMetadata({
   if (!caseType) return {};
   const title = `${caseType.name} Intake Protocol | Call Della`;
   const description = `Della's intake protocol for ${caseType.name.toLowerCase()}. Statute of limitations context, liability + insurance considerations, and the questions Della asks every caller.`;
-  const url = `https://calldella.com/case-types/${caseType.slug}`;
+  const url = `${SITE_URL}/case-types/${caseType.slug}`;
   return {
     title: { absolute: title },
     description,

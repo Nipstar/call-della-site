@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, PLAUSIBLE_DOMAIN, CONTACT_EMAIL } from "@/lib/config";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -12,8 +13,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
-
-const SITE_URL = "https://calldella.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -82,7 +81,7 @@ export default function RootLayout({
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hello@calldella.com",
+      email: CONTACT_EMAIL,
       areaServed: "US",
       availableLanguage: ["English", "Spanish"],
     },
@@ -119,7 +118,7 @@ export default function RootLayout({
       <head>
         <script
           defer
-          data-domain="calldella.com"
+          data-domain={PLAUSIBLE_DOMAIN}
           src="https://plausible.io/js/script.js"
         />
         <script
