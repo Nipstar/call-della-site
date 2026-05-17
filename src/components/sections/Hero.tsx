@@ -3,7 +3,6 @@
 import { Eyebrow, Body } from '../Typography';
 import { CTAButton } from '../CTAButton';
 import { DossierMockup } from '../DossierMockup';
-import { AudioPlayer } from '../AudioPlayer';
 import { trackEvent } from '@/lib/analytics';
 import type { Vertical } from '@/lib/verticals';
 
@@ -12,11 +11,10 @@ type HeroProps = {
   demo?: Vertical['demo'];
   slug?: Vertical['slug'];
   dossier?: Vertical['heroDossier'];
-  showAudio?: boolean;
   showDossier?: boolean;
 };
 
-export const Hero = ({ hero, demo, slug, dossier, showAudio = true, showDossier = true }: HeroProps) => (
+export const Hero = ({ hero, demo, slug, dossier, showDossier = true }: HeroProps) => (
   <section className="px-8 pt-6 pb-20 max-w-[1180px] mx-auto">
     <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-16 items-center">
       <div>
@@ -49,13 +47,6 @@ export const Hero = ({ hero, demo, slug, dossier, showAudio = true, showDossier 
             >
               {demo.phoneDisplay}
             </a>
-          </div>
-        )}
-        {showAudio && (
-          <div className="mt-8">
-            <AudioPlayer
-              label={dossier ? `EVIDENCE TAPE · ${dossier.intakeId}` : undefined}
-            />
           </div>
         )}
       </div>

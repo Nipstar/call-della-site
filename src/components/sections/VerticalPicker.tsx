@@ -54,11 +54,11 @@ export const VerticalPicker = () => (
               <Body size={14}>{copy.body}</Body>
             </div>
 
-            <div className="mt-6 pt-5 border-t border-[var(--rule-soft)]">
-              <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase mb-1.5">
-                {copy.ctaPrefix} →
-              </div>
-              {hasNumber ? (
+            {hasNumber && (
+              <div className="mt-6 pt-5 border-t border-[var(--rule-soft)]">
+                <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase mb-1.5">
+                  {copy.ctaPrefix} →
+                </div>
                 <a
                   href={`tel:${v.demo.phoneE164}`}
                   onClick={() => trackEvent(`demo_call_click_${v.slug}`)}
@@ -66,10 +66,8 @@ export const VerticalPicker = () => (
                 >
                   {v.demo.phoneDisplay}
                 </a>
-              ) : (
-                <span className="text-[16px] text-[var(--ink-soft)] font-serif italic">Demo number coming soon</span>
-              )}
-            </div>
+              </div>
+            )}
 
             <a
               href={`/${v.slug}`}

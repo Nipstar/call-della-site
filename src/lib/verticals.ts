@@ -74,8 +74,8 @@ export const verticals: Record<VerticalSlug, Vertical> = {
       ctaSecondary: 'Book a discovery call',
     },
     demo: {
-      phoneDisplay: 'TBD',
-      phoneE164: '+10000000000',
+      phoneDisplay: '(650) 536-0172',
+      phoneE164: '+16505360172',
       label: 'Try Della-PI — call now',
     },
     heroDossier: {
