@@ -149,7 +149,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-30 bg-[var(--bg)]/90 border-b border-[var(--rule)] px-4 md:px-8 py-2 flex justify-between items-center backdrop-blur-md">
-      <Link href="/" className="block no-underline py-1.5" aria-label="Call Della home">
+      <Link href="/" className="block no-underline py-1.5">
         <div className="text-[20px] md:text-[22px] font-semibold text-[var(--ink)] font-serif tracking-tight leading-none">
           call della
         </div>

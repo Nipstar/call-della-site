@@ -7,7 +7,7 @@
   --paper-deep: #CFC195;
   --ink: #1F1A11;
   --ink-soft: #5C4F37;
-  --ink-faint: #9A8B69;
+  --ink-faint: #62553D; /* 4.5:1+ on paper and paper-edge */
   --rule: #3D332A;
   --rule-soft: #8B7E5E;
   --stamp-red: #A8351A;

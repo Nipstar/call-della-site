@@ -13,9 +13,11 @@ const newsreader = Newsreader({
   style: ["normal", "italic"],
 });
 
+// Mono is only used for small labels; don't let it compete with the body font for bandwidth.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
