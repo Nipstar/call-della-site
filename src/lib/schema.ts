@@ -159,3 +159,30 @@ export const serviceNode = (s: { path: string; name: string; description: string
   areaServed: { '@type': 'Country', name: 'United States' },
   offers: PLANS.map((p) => ({ '@id': `${SITE_URL}/pricing#${p.id}` })),
 });
+
+// Hub pages: the page is a collection whose main entity is the list of its child pages.
+export const collectionNode = (c: {
+  path: string;
+  name: string;
+  description: string;
+  items: { name: string; path: string }[];
+}): Node => ({
+  '@type': 'CollectionPage',
+  '@id': `${SITE_URL}${c.path}#page`,
+  url: `${SITE_URL}${c.path}`,
+  name: c.name,
+  description: c.description,
+  isPartOf: { '@id': WEBSITE_ID },
+  about: { '@id': ORG_ID },
+  inLanguage: 'en-US',
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: c.items.length,
+    itemListElement: c.items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      url: `${SITE_URL}${it.path}`,
+    })),
+  },
+});

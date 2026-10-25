@@ -6,7 +6,9 @@ import { Breadcrumbs } from './Breadcrumbs';
 import { Eyebrow } from './Typography';
 
 import { JsonLd } from './JsonLd';
-import { graph, articleNode, type Citation } from '@/lib/schema';
+import { graph, articleNode, collectionNode, type Citation } from '@/lib/schema';
+import { stateData } from '@/data/states';
+import { caseData } from '@/data/cases';
 import { PAGES, formatDate } from '@/data/pages';
 
 type Props = {
@@ -22,6 +24,16 @@ type Props = {
   breadcrumbs?: { name: string; href: string }[];
   description?: string;
   citations?: Citation[];
+};
+
+const HUBS = ['/compliance', '/intake-playbook', '/operations', '/compare', '/states', '/case-types'];
+
+// Child pages of a hub, from the manifest plus the state and case-type data.
+const hubChildren = (path: string) => {
+  if (!HUBS.includes(path)) return [];
+  if (path === '/states') return stateData.map((s) => ({ name: `${s.name} personal injury intake`, path: `/states/${s.slug}` }));
+  if (path === '/case-types') return caseData.map((c) => ({ name: `${c.name} intake`, path: `/case-types/${c.slug}` }));
+  return PAGES.filter((p) => p.path.startsWith(`${path}/`)).map((p) => ({ name: p.title.replace(/ \| Call Della$/, ''), path: p.path }));
 };
 
 export const ArticleLayout = ({
@@ -42,8 +54,16 @@ export const ArticleLayout = ({
   const entry = slug ? PAGES.find((p) => p.path === slug) : undefined;
   const published = entry?.datePublished ?? datePublished ?? date;
   const modified = entry?.dateModified ?? dateModified ?? published;
+  const hubItems = slug ? hubChildren(slug) : [];
   const articleSchema = slug
     ? graph(
+        hubItems.length > 0 &&
+          collectionNode({
+            path: slug,
+            name: title,
+            description: entry?.description ?? description ?? '',
+            items: hubItems,
+          }),
         articleNode({
           path: slug,
           headline: title,
