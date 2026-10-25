@@ -27,8 +27,8 @@ const FAQS = [
     a: 'Enter the average fee the firm actually receives per signed matter, not the gross settlement or verdict. For contingency work, use the average fee after the case resolves. For flat-fee or hourly work, use the average billed and collected per matter. Use a trailing 12-month average to smooth out one large case.',
   },
   {
-    q: 'Why does the calculator start empty?',
-    a: 'Because any default would be a guess about your firm. Missed-call counts, sign rates and fees vary widely by practice area, market and marketing mix, and we have no published benchmark for them that we would stand behind. The calculator only gives a useful answer with your own figures from your own records.',
+    q: 'Where do the starting figures come from?',
+    a: 'They are examples, not benchmarks: 40 missed calls a month, half of them new matters, a 25% sign rate and a $5,000 average fee. Missed-call counts, sign rates and fees vary widely by practice area, market and marketing mix. Move each slider to your own figures from your phone log and case records.',
   },
   {
     q: 'How do I reduce my missed-call cost?',
@@ -55,7 +55,7 @@ export default function Page() {
             The missed-call cost for a law firm is the fees a month riding on calls nobody answered: missed calls, times the share that are new matters, times your sign rate, times your average fee.
           </p>
           <p className="m-0">
-            Most firms have a gap to measure. In Clio&apos;s 2024 secret-shopper study, only 40% of 500 US firms answered a prospective client&apos;s call. Enter your own figures below; the fields start empty.
+            Most firms have a gap to measure. In Clio&apos;s 2024 secret-shopper study, only 40% of 500 US firms answered a prospective client&apos;s call. Move the sliders below to your own figures; they start on example values.
           </p>
         </>
       }

@@ -29,6 +29,13 @@ const Section = ({ children, id }: { children: ReactNode; id?: string }) => (
   <section id={id} className="px-4 md:px-8 py-16 max-w-[780px] mx-auto">{children}</section>
 );
 
+// Example slider starting points per practice (labelled as examples on the page, not benchmarks).
+const EXAMPLE: Record<string, { missed: number; newShare: number; signRate: number; fee: number }> = {
+  'personal-injury': { missed: 40, newShare: 50, signRate: 20, fee: 10000 },
+  'criminal-defense': { missed: 40, newShare: 60, signRate: 30, fee: 4000 },
+  immigration: { missed: 40, newShare: 60, signRate: 30, fee: 3500 },
+};
+
 const MATTER: Record<string, string> = {
   'personal-injury': 'injury case',
   'criminal-defense': 'criminal matter',
@@ -154,7 +161,7 @@ export const VerticalLanderShell = ({ vertical }: Props) => {
             </ul>
           </Section>
 
-          <MissedCallSection matter={MATTER[vertical.slug] ?? 'case'} />
+          <MissedCallSection matter={MATTER[vertical.slug] ?? 'case'} example={EXAMPLE[vertical.slug]} />
 
           <VerticalFAQ
             faq={vertical.faq}
