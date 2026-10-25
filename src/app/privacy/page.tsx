@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/data/pages';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description:
-    'Privacy policy for Call Della — how we collect, store, and process call recordings, transcripts, and intake data on behalf of law firms.',
-  alternates: { canonical: '/privacy' },
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = pageMeta('/privacy');
 
 export default function PrivacyPage() {
   return (

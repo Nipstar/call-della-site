@@ -1,133 +1,131 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { stateData } from '@/data/states';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { PaperTexture } from '@/components/PaperTexture';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Eyebrow, Headline } from '@/components/Typography';
-import { CTAButton } from '@/components/CTAButton';
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { FAQ } from '@/components/FAQ';
+import { Prose, DemoCTA } from '@/app/intake-playbook/_ui';
+import { stateData, stateBySlug, STATES_PUBLISHED, STATES_UPDATED, LMNC } from '@/data/states';
+import { Passage, SourceLine } from '../_parts';
+import { RECORDING_CONSENT, rcfpUrl } from '@/data/recordingConsent';
+import type { Citation } from '@/lib/schema';
 import { SITE_URL } from '@/lib/config';
 
 export function generateStaticParams() {
-  return stateData.map((state) => ({
-    slug: state.slug,
-  }));
+  return stateData.map((s) => ({ slug: s.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+const titleFor = (name: string) => `${name} Personal Injury Intake: Deadlines and Fault Rules`;
+const descFor = (s: NonNullable<ReturnType<typeof stateBySlug>>) =>
+  `${s.name} personal injury intake for law firms: the ${s.sol.period} statute of limitations, the fault rule, no-fault status, and what to capture on the first call.`;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const state = stateData.find((s) => s.slug === slug);
-  if (!state) return {};
-  const title = `${state.name} Personal Injury Intake | Call Della`;
-  const description = `After-hours PI intake for ${state.name} firms. SOL, comparative negligence, no-fault status, damages caps — and how Della handles ${state.name} intake nightly.`;
-  const url = `${SITE_URL}/states/${state.slug}`;
+  const s = stateBySlug(slug);
+  if (!s) return {};
+  const title = titleFor(s.name);
+  const description = descFor(s);
+  const path = `/states/${s.slug}`;
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `/states/${state.slug}` },
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      url,
-      images: [{ url: '/og-default.png', width: 1200, height: 630, alt: title }],
-    },
+    alternates: { canonical: path },
+    openGraph: { title, description, type: 'article', url: `${SITE_URL}${path}`, images: [{ url: '/og-default.png', width: 1200, height: 630, alt: title }] },
     twitter: { card: 'summary_large_image', title, description, images: ['/og-default.png'] },
   };
 }
 
+const LABEL = { 'one-party': 'one-party', 'all-party': 'all-party', mixed: 'mixed' } as const;
+
 export default async function StatePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const state = stateData.find(s => s.slug === slug);
+  const s = stateBySlug(slug);
+  if (!s) notFound();
 
-  if (!state) {
-    notFound();
-  }
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": state.faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  };
+  const path = `/states/${s.slug}`;
+  const rec = RECORDING_CONSENT.find((r) => r.code === s.code)!;
+  const rcfp: Citation = { name: `Reporter’s Recording Guide: ${s.name}`, url: rcfpUrl(rec), publisher: 'Reporters Committee for Freedom of the Press' };
+  const sections = [s.fault, s.noFault, s.deadlines, s.caps, s.ai];
+  const citations = [{ name: s.sol.cite, url: s.sol.url }, ...sections.flatMap((x) => x.src), rcfp, LMNC].filter(
+    (c, i, all) => all.findIndex((d) => d.url === c.url) === i,
+  );
 
   return (
-    <div className="relative min-h-screen flex flex-col">
-      <PaperTexture />
-      <div className="relative z-20 flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow px-8 py-24 max-w-[800px] mx-auto w-full">
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-          <Breadcrumbs
-            items={[
-              { name: 'States', href: '/states' },
-              { name: state.name, href: `/states/${state.slug}` },
-            ]}
-          />
-          <Eyebrow>LOCATION: {state.name.toUpperCase()}</Eyebrow>
-          <Headline as="h1" size={44} maxWidth={800}>
-            Personal injury intake in {state.name}: After-hours coverage built for {state.name} PI firms
-          </Headline>
-          
-          <div className="mt-8">
-            <p className="text-[17px] text-[var(--ink)] font-serif leading-[1.6]">
-              {state.intro}
-            </p>
-          </div>
+    <ArticleLayout
+      eyebrow={`STATE GUIDE · ${s.name.toUpperCase()}`}
+      title={titleFor(s.name)}
+      tldr={s.tldr}
+      slug={path}
+      datePublished={STATES_PUBLISHED}
+      dateModified={STATES_UPDATED}
+      description={descFor(s)}
+      date={STATES_PUBLISHED}
+      author="Andy Norman"
+      breadcrumbs={[
+        { name: 'States', href: '/states' },
+        { name: s.name, href: path },
+      ]}
+      citations={citations}
+    >
+      <Prose>
+        <p className="!text-[15px] italic">
+          This guide is for law firms. If you were injured, contact a licensed {s.name} attorney.
+        </p>
 
-          <article className="prose prose-p:font-serif prose-p:text-[17px] prose-p:leading-[1.6] prose-p:text-[var(--ink)] prose-headings:font-serif prose-headings:text-[var(--ink)] prose-h2:text-[28px] prose-h2:font-semibold prose-h2:tracking-[-0.02em] prose-h2:mt-16 prose-h2:mb-6 prose-li:font-serif prose-li:text-[17px] prose-strong:font-semibold max-w-none">
-            
-            <h2>{state.name} personal injury law: What intake needs to capture</h2>
-            <ul className="list-disc pl-5">
-              <li><strong>Statute of Limitations:</strong> {state.sol}</li>
-              <li><strong>Comparative Negligence:</strong> {state.comparativeNegligence}</li>
-              <li><strong>No-Fault Status:</strong> {state.noFault}</li>
-              <li><strong>Damages Caps:</strong> {state.damagesCaps}</li>
-            </ul>
+        <aside className="my-10 border-[1.5px] border-[var(--rule)] bg-[var(--paper)] p-6 md:p-8" aria-label={`${s.name} statute of limitations`}>
+          <p className="!mb-2 font-mono !text-[11px] uppercase tracking-[0.1em] !text-[var(--ink-soft)]">
+            {s.name} personal injury statute of limitations
+          </p>
+          <p className="!mb-3 !text-[34px] font-semibold leading-none">{s.sol.period}</p>
+          <p className="!mb-3">{s.sol.detail}</p>
+          <p className="!mb-0 !text-[14px] !text-[var(--ink-soft)]">
+            Source: <a href={s.sol.url}>{s.sol.cite}</a>. Checked {STATES_UPDATED}.
+          </p>
+        </aside>
 
-            <h2>How Della handles {state.name} intake</h2>
-            <p>{state.handlingDetail}</p>
+        <Passage heading={`Does ${s.name} use comparative or contributory negligence?`} s={s.fault} />
+        <Passage heading={`Is ${s.name} a no-fault state?`} s={s.noFault} />
+        <Passage heading={`Which ${s.name} deadlines can run out before the statute of limitations?`} s={s.deadlines} />
+        <Passage heading={`Does ${s.name} cap personal injury damages?`} s={s.caps} />
+        <Passage heading={`What does ${s.name} guidance say about lawyers using AI?`} s={s.ai} />
 
-            <h2>State bar rules on AI use in legal intake</h2>
-            <p>{state.stateBar}</p>
+        <h2>Do {s.name} intake calls need recording consent?</h2>
+        <p>
+          <strong>
+            {s.name} is a{rec.phone === 'all-party' ? 'n' : ''} {LABEL[rec.phone]} consent state for recording phone calls, under {rec.statute}.
+          </strong>{' '}
+          {rec.note ? `${rec.note} ` : ''}
+          {s.recordingNote} Every Call Della plan includes a recording disclosure set for the firm’s state, and Della plays it before the caller describes their matter. Our{' '}
+          <a href="/compliance/call-recording-consent-by-state">call recording consent by state</a> table covers all 50 states and DC.
+        </p>
+        <SourceLine src={[rcfp]} />
 
-            <h2>Pricing for {state.name} firms</h2>
-            <p>
-              We don&apos;t do regional pricing adjustments. Call Della offers the same transparent, flat-rate tiers nationally — Solo, Practice, and Group, all month-to-month with no setup fees.
-            </p>
-            <p>
-              <a href="/pricing">See full pricing →</a>
-            </p>
+        <h2>What should a {s.name} intake call capture?</h2>
+        <p>
+          <strong>A {s.name} intake call should capture the facts that decide the deadline, the fault rule and the coverage, in the caller’s own words.</strong>{' '}
+          The checklist below is the minimum for a {s.name} auto or premises matter. It is a list of facts to record, not questions to argue with the caller.
+        </p>
+        <ol>
+          {s.capture.map((c) => (
+            <li key={c}>{c}</li>
+          ))}
+        </ol>
 
-            <div className="my-12">
-              <CTAButton primary>Book a demo</CTAButton>
-            </div>
+        <h2>How does Della handle {s.name} intake after hours?</h2>
+        <p>
+          <strong>{s.della.split('. ')[0]}.</strong> {s.della.split('. ').slice(1).join('. ')}
+        </p>
+        <p>
+          Firms lose callers in the gap between the call and the reply. According to{' '}
+          <a href={LMNC.url}>Lawyers Mutual NC (2019)</a>, reporting an ABA Law Practice Division secret-shopper study, lawyers took three or more days to reply to voicemails and online requests 42 percent of the time. See how Della runs{' '}
+          <a href="/personal-injury">after-hours personal injury intake</a>, or compare {s.name} with other states in our{' '}
+          <a href="/states">personal injury rules by state</a> table.
+        </p>
+      </Prose>
 
-            <h2>Frequently asked by {state.name} firms</h2>
-            <div className="flex flex-col gap-6 mt-8">
-              {state.faqs.map((faq, i) => (
-                <div key={i} className="border-l-2 border-[var(--rule)] pl-4">
-                  <h3 className="text-[18px] font-semibold tracking-[-0.01em] mt-0 mb-2">{faq.q}</h3>
-                  <p className="text-[15px] italic text-[var(--ink-soft)] m-0">{faq.a}</p>
-                </div>
-              ))}
-            </div>
+      <DemoCTA>
+        Hear Della take a {s.name} injury call. Book a demo and she will run a live intake call for your practice area, then show you the dossier with the recording and transcript.
+      </DemoCTA>
 
-          </article>
-        </main>
-        <Footer />
-      </div>
-    </div>
+      <FAQ items={s.faqs} heading={`${s.name} personal injury intake: common questions`} eyebrow="FAQ" />
+    </ArticleLayout>
   );
 }

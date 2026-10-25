@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
+import { pageMeta } from '@/data/pages';
 import React from 'react';
 import { ArticleLayout } from '@/components/ArticleLayout';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service',
-  description:
-    'Terms of service for Call Della — voice AI intake software for law firms. Service scope, no legal advice, no attorney-client relationship.',
-  alternates: { canonical: '/terms' },
-  robots: { index: true, follow: true },
-};
+export const metadata: Metadata = pageMeta('/terms');
 
 export default function TermsPage() {
   return (
