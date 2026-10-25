@@ -10,7 +10,7 @@ export const PLAUSIBLE_DOMAIN =
 
 export const N8N_WEBHOOK_URL =
   process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ??
-  'https://auto.juxtarank.com/webhook-test/call-della';
+  'https://auto.juxtarank.com/webhook/call-della';
 
 // GHL booking widget (crm.antekautomation.com), shared by calldella.com and the feeder sites.
 export const BOOKING_URL =
