@@ -8,7 +8,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { pageMeta } from '@/data/pages';
 import { graph, ORG_ID, FOUNDER_ID } from '@/lib/schema';
-import { CATEGORY_DEFINITION } from '@/lib/plans';
+import { CATEGORY_DEFINITION, DEMO_MINUTES } from '@/lib/plans';
+import { FAQ } from '@/components/FAQ';
 import { SITE_URL, CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata: Metadata = pageMeta('/about');
@@ -28,6 +29,29 @@ const aboutPage = {
 
 const link = 'underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]';
 const para = 'text-[17px] text-[var(--ink)] font-serif leading-[1.65] m-0';
+
+const aboutFaq = [
+  {
+    q: 'Who is behind Call Della?',
+    a: 'Call Della was founded by Andy Norman and is built by Antek Automation, a voice AI agency he also founded. Della runs on the Retell AI voice platform. The intake flows, the urgency scoring and the morning dossier are designed by the Call Della team for law firm intake specifically.',
+  },
+  {
+    q: 'Is Della a lawyer, and does she give legal advice?',
+    a: 'No. Della is an intake specialist, not a lawyer. She never gives legal advice, never quotes fees and never suggests that representation has begun. She takes the caller\'s details, qualifies the matter and passes everything to the firm\'s attorneys. If a caller asks whether she is an AI, she says so.',
+  },
+  {
+    q: 'Which practice areas does Della cover?',
+    a: 'Della has intake flows built for personal injury, criminal defense and immigration firms. Each flow asks the questions that practice area needs on a first call. Spanish-language intake is available on the immigration flow today; personal injury and criminal defense intake run in English.',
+  },
+  {
+    q: 'Who owns the call recordings and transcripts?',
+    a: 'The firm does. Every recording, transcript and dossier Della creates belongs to the law firm she answers for, and call data is not used to train AI models. Retention is set per firm. The security page explains how call data is handled.',
+  },
+  {
+    q: 'How do I find out whether Della fits my firm?',
+    a: `Book a ${DEMO_MINUTES}-minute demo. We run a live Della call for your practice area while you listen, then walk you through the dossier she files. You can also email hello@calldella.com with questions before you book, such as how Della would handle a call type your firm sees often.`,
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -125,6 +149,7 @@ export default function AboutPage() {
             <CTAButton primary large>Book a demo</CTAButton>
             <a href={`mailto:${CONTACT_EMAIL}`} className={`${link} font-serif text-[16px] text-[var(--ink)]`}>{CONTACT_EMAIL}</a>
           </div>
+          <FAQ items={aboutFaq} eyebrow="ABOUT CALL DELLA" heading="Questions about Call Della" />
         </main>
         <Footer />
       </div>

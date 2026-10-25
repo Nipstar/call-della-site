@@ -9,7 +9,8 @@ import { JsonLd } from '@/components/JsonLd';
 import { Eyebrow, Headline } from '@/components/Typography';
 import { pageMeta } from '@/data/pages';
 import { graph, ORG_ID } from '@/lib/schema';
-import { DEMO_MINUTES } from '@/lib/plans';
+import { DEMO_MINUTES, PLANS, OVERAGE_PER_MINUTE } from '@/lib/plans';
+import { FAQ } from '@/components/FAQ';
 import { SITE_URL, CONTACT_EMAIL } from '@/lib/config';
 
 export const metadata: Metadata = pageMeta('/contact');
@@ -26,6 +27,30 @@ const contactPage = {
 
 const link = 'underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]';
 const para = 'text-[17px] text-[var(--ink)] font-serif leading-[1.65] m-0';
+
+const [solo, practice] = PLANS;
+const contactFaq = [
+  {
+    q: 'What happens on a Call Della demo?',
+    a: `The demo takes ${DEMO_MINUTES} minutes. We run a live Della intake call for your practice area while you listen, so you hear the questions she asks and how she handles an urgent caller. Then we walk you through the dossier she files and answer your questions on setup and pricing.`,
+  },
+  {
+    q: 'Who should join the demo?',
+    a: 'Whoever owns intake at your firm. For a solo lawyer that is you. For larger firms it is usually the managing partner, the intake manager, or both. The demo works best when the person who handles after-hours calls today can hear how Della would take them.',
+  },
+  {
+    q: 'Do I need to prepare anything?',
+    a: 'No preparation is needed. It helps to know roughly how many calls reach your firm after hours each week, what happens to them now (voicemail, an answering service or your own cell phone) and which practice areas you want covered. We use that to pick the right demo call.',
+  },
+  {
+    q: 'How much does Call Della cost?',
+    a: `${solo.name} is $${solo.price} a month for ${solo.minutes} minutes. ${practice.name} is $${practice.price} a month for ${practice.minutes} minutes. Group plans are priced to your volume. Extra minutes cost $${OVERAGE_PER_MINUTE.toFixed(2)} each. Every plan includes the dashboard, urgent-call email alerts and the morning brief.`,
+  },
+  {
+    q: 'Is there a contract or a setup fee?',
+    a: 'No. Every Call Della plan is month-to-month, with no setup fee and no long-term contract. Setup covers your firm details, your Della number and call forwarding, and a test call before Della takes live calls, and it is included in the plan.',
+  },
+];
 
 export default function ContactPage() {
   return (
@@ -81,6 +106,7 @@ export default function ContactPage() {
               <ContactForm />
             </div>
           </section>
+          <FAQ items={contactFaq} eyebrow="BEFORE YOU BOOK" heading="Questions about the demo" />
         </main>
         <Footer />
       </div>
