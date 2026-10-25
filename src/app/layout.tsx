@@ -11,6 +11,9 @@ const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
   style: ["normal", "italic"],
+  // optional: no late swap, so no LCP repaint or layout shift on slow connections.
+  // First visit may keep the metric-matched fallback; the cached font is used after that.
+  display: "optional",
 });
 
 // Mono is only used for small labels; don't let it compete with the body font for bandwidth.
@@ -18,6 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   preload: false,
+  display: "optional",
 });
 
 export const metadata: Metadata = {
