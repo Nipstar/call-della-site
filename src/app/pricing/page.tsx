@@ -9,91 +9,17 @@ import { BookingModal } from '@/components/BookingModal';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline, Body } from '@/components/Typography';
 
-import { SITE_URL } from '@/lib/config';
+import { pageMeta } from '@/data/pages';
+import { JsonLd } from '@/components/JsonLd';
+import { graph, offerNodes, serviceNode } from '@/lib/schema';
+import { CATEGORY_DEFINITION } from '@/lib/plans';
 
-export const metadata: Metadata = {
-  title: 'Pricing — Three plans, month-to-month',
-  description:
-    'Solo $329, Practice $598, Group custom. 300, 600 or custom minutes. Month-to-month, no setup fees, $0.50 per-minute overage.',
-  keywords: [
-    'Call Della pricing',
-    'AI legal intake pricing',
-    'after hours intake cost',
-    'law firm answering service pricing',
-  ],
-  alternates: { canonical: '/pricing' },
-  openGraph: {
-    title: 'Pricing — Three plans, month-to-month | Call Della',
-    description: 'Solo $329, Practice $598, Group custom. Month-to-month, no setup fees.',
-    type: 'website',
-    url: `${SITE_URL}/pricing`,
-    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Call Della pricing' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Pricing — Three plans, month-to-month | Call Della',
-    description: 'Solo $329, Practice $598, Group custom.',
-    images: ['/og-default.png'],
-  },
-};
-
-const productSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  '@id': `${SITE_URL}/pricing#product`,
-  name: 'Call Della — After-Hours AI Intake',
-  description:
-    'After-hours voice AI intake for personal injury, criminal defense, and immigration law firms.',
-  brand: { '@type': 'Brand', name: 'Call Della' },
-  url: `${SITE_URL}/pricing`,
-  category: 'Legal Intake Service',
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'Solo',
-      price: '329',
-      priceCurrency: 'USD',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '329',
-        priceCurrency: 'USD',
-        unitText: 'MONTH',
-      },
-      url: `${SITE_URL}/pricing`,
-      availability: 'https://schema.org/InStock',
-      offeredBy: { '@id': `${SITE_URL}/#organization` },
-    },
-    {
-      '@type': 'Offer',
-      name: 'Practice',
-      price: '598',
-      priceCurrency: 'USD',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '598',
-        priceCurrency: 'USD',
-        unitText: 'MONTH',
-      },
-      url: `${SITE_URL}/pricing`,
-      availability: 'https://schema.org/InStock',
-      offeredBy: { '@id': `${SITE_URL}/#organization` },
-    },
-    {
-      '@type': 'Offer',
-      name: 'Group',
-      priceCurrency: 'USD',
-      url: `${SITE_URL}/pricing`,
-      availability: 'https://schema.org/InStock',
-      description: 'Multi-office, custom volume — contact sales.',
-      offeredBy: { '@id': `${SITE_URL}/#organization` },
-    },
-  ],
-};
+export const metadata: Metadata = pageMeta('/pricing');
 
 export default function PricingPage() {
   return (
     <div className="relative min-h-screen flex flex-col">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <JsonLd data={graph(...offerNodes(), serviceNode({ path: '/pricing', name: 'Call Della after-hours legal intake', description: CATEGORY_DEFINITION }))} />
       <PaperTexture />
       <div className="relative z-20 flex flex-col min-h-screen">
         <Header />

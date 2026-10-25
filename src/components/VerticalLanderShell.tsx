@@ -33,7 +33,7 @@ export const VerticalLanderShell = ({ vertical }: Props) => {
     serviceType: `${vertical.name} after-hours intake`,
     category: `${vertical.name} legal intake`,
     url: `${SITE_URL}/${vertical.slug}`,
-    provider: { '@id': `${SITE_URL}/#organization` },
+    provider: { '@id': `${SITE_URL}/#org` },
     areaServed: { '@type': 'Country', name: 'United States' },
     audience: {
       '@type': 'BusinessAudience',

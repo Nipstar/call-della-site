@@ -1,12 +1,19 @@
 import { Stamp } from '../Stamp';
 import { openBookingModal } from '../BookingModal';
+import { PLANS, INCLUDES, GROUP_EXTRAS, OVERAGE_PER_MINUTE } from '@/lib/plans';
 
 export const Pricing = () => {
-  const tiers = [
-    { name:"SOLO · SOLO LAWYERS", price:329, mins:"300", popular:false, features:["Della answering in your firm's name, nights, weekends and holidays","Dashboard: every call as a dossier with summary, urgency score, recording and transcript","Urgent-call email alerts to the attorney on call","Morning brief by 7am in your time zone","Recording disclosure set for your state","Your own Della number, forwarding and a test call before go-live"], cta:"Hire Solo" },
-    { name:"PRACTICE · POPULAR", price:598, mins:"600", popular:true, features:["Everything in Solo","Built for small and growing firms","Double the minutes"], cta:"Hire Practice" },
-    { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"Custom", popular:false, features:["Everything in Practice","Custom minutes, priced to your volume","More than one practice area","CRM webhook"], cta:"Book a demo" }
-  ];
+  const tiers = PLANS.map((p) => ({
+    name: p.label,
+    price: p.price ?? 'Custom',
+    mins: p.minutes ? p.minutes.toLocaleString('en-US') : 'Custom',
+    popular: p.popular,
+    features:
+      p.id === 'solo' ? INCLUDES
+      : p.id === 'practice' ? ['Everything in Solo', `${p.minutes} minutes a month, double Solo`, `Built for ${p.audience.toLowerCase()}`]
+      : ['Everything in Practice', ...GROUP_EXTRAS],
+    cta: 'Book a demo',
+  }));
   return (
     <section id="pricing" className="px-8 pb-12 max-w-[1180px] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px]">
@@ -37,7 +44,7 @@ export const Pricing = () => {
                 <span className="text-[32px] font-semibold text-[var(--ink)] font-serif tracking-[-0.02em] leading-none">{tier.price}</span>
               )}
             </div>
-            <div className="text-[13px] text-[var(--ink-soft)] font-serif italic">Up to {tier.mins} minutes</div>
+            <div className="text-[13px] text-[var(--ink-soft)] font-serif italic">{tier.mins} minutes a month</div>
             <div className="h-[1px] bg-[var(--rule-soft)] my-5" />
             <div className="flex flex-col gap-2.5 mb-6 min-h-[160px]">
               {tier.features.map(f => (
@@ -66,7 +73,7 @@ export const Pricing = () => {
       </div>
 
       <div className="mt-6 text-center text-[10px] text-[var(--ink-soft)] font-mono tracking-[0.14em] uppercase">
-        USAGE OVER PLAN BILLED AT $0.50 PER MINUTE · NO SURPRISES · CANCEL ANY TIME
+        {`EXTRA MINUTES ${OVERAGE_PER_MINUTE.toFixed(2)} EACH · MONTH-TO-MONTH · NO SETUP FEE`}
       </div>
     </section>
   );

@@ -15,16 +15,11 @@ type Props = {
 };
 
 export const DemoCallout = ({ demo, eyebrow, heading, sub, slug }: Props) => {
-  const hasNumber = demo.phoneDisplay && demo.phoneDisplay !== 'TBD';
-
   const onBookClick = () => {
     trackEvent('book_demo_click_vertical', slug ? { slug } : undefined);
     openBookingModal();
   };
 
-  const onPhoneClick = () => {
-    if (slug) trackEvent(`demo_call_click_${slug}`);
-  };
 
   return (
     <section className="px-8 py-20 bg-[var(--paper-edge)] border-y border-[var(--rule)]">
@@ -37,20 +32,6 @@ export const DemoCallout = ({ demo, eyebrow, heading, sub, slug }: Props) => {
           </div>
         )}
 
-        {hasNumber && (
-          <div className="mt-9 inline-flex flex-col gap-2 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] px-7 py-5 shadow-[4px_4px_0_var(--rule)]">
-            <div className="text-[10px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase">
-              {demo.label || 'Try Della — call now'}
-            </div>
-            <a
-              href={`tel:${demo.phoneE164}`}
-              onClick={onPhoneClick}
-              className="text-[28px] font-semibold text-[var(--ink)] font-serif tracking-[-0.02em] no-underline"
-            >
-              {demo.phoneDisplay}
-            </a>
-          </div>
-        )}
 
         <div className="mt-9 flex justify-center">
           <CTAButton primary large onClick={onBookClick}>Book a demo</CTAButton>

@@ -35,20 +35,6 @@ export const Hero = ({ hero, demo, slug, dossier, showDossier = true }: HeroProp
           <CTAButton primary large>{hero.ctaPrimary}</CTAButton>
           {hero.ctaSecondary && <CTAButton large>{hero.ctaSecondary}</CTAButton>}
         </div>
-        {demo && demo.phoneDisplay !== 'TBD' && (
-          <div className="mt-6 inline-flex flex-col gap-1 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] px-5 py-3">
-            <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase">
-              {demo.label || 'Try Della — call now'}
-            </div>
-            <a
-              href={`tel:${demo.phoneE164}`}
-              onClick={() => slug && trackEvent(`demo_call_click_${slug}`)}
-              className="text-[22px] font-semibold text-[var(--ink)] font-serif tracking-[-0.02em] no-underline"
-            >
-              {demo.phoneDisplay}
-            </a>
-          </div>
-        )}
       </div>
 
       {showDossier && <DossierMockup variant="hero" data={dossier} />}

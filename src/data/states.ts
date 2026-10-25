@@ -1,3 +1,5 @@
+export const STATES_UPDATED = "2026-10-25";
+
 export const stateData = [
   {
     name: "Texas",

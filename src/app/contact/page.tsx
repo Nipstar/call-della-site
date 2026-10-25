@@ -35,10 +35,10 @@ const contactPageSchema = {
   '@id': `${SITE_URL}/contact#contactpage`,
   url: `${SITE_URL}/contact`,
   name: 'Contact Call Della',
-  about: { '@id': `${SITE_URL}/#organization` },
+  about: { '@id': `${SITE_URL}/#org` },
   mainEntity: {
     '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
+    '@id': `${SITE_URL}/#org`,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',

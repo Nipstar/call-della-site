@@ -1,3 +1,5 @@
+export const CASES_UPDATED = "2026-10-25";
+
 export const caseData = [
   {
     name: "Auto Accidents",

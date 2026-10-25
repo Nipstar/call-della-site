@@ -36,7 +36,6 @@ export const VerticalPicker = () => (
     <div className="mt-[60px] grid grid-cols-1 md:grid-cols-3 gap-[18px]">
       {verticalList.map((v) => {
         const copy = cardCopy[v.slug];
-        const hasNumber = v.demo.phoneDisplay && v.demo.phoneDisplay !== 'TBD';
         return (
           <div
             key={v.slug}
@@ -54,20 +53,6 @@ export const VerticalPicker = () => (
               <Body size={14}>{copy.body}</Body>
             </div>
 
-            {hasNumber && (
-              <div className="mt-6 pt-5 border-t border-[var(--rule-soft)]">
-                <div className="text-[9.5px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase mb-1.5">
-                  {copy.ctaPrefix} →
-                </div>
-                <a
-                  href={`tel:${v.demo.phoneE164}`}
-                  onClick={() => trackEvent(`demo_call_click_${v.slug}`)}
-                  className="text-[20px] font-semibold text-[var(--ink)] font-serif tracking-[-0.02em] no-underline"
-                >
-                  {v.demo.phoneDisplay}
-                </a>
-              </div>
-            )}
 
             <a
               href={`/${v.slug}`}

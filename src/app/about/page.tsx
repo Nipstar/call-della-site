@@ -32,11 +32,11 @@ export const metadata: Metadata = {
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  '@id': `${SITE_URL}/about#founder`,
+  '@id': `${SITE_URL}/about/andy-norman#person`,
   name: 'Andy Norman',
   url: `${SITE_URL}/about`,
   jobTitle: 'Founder',
-  worksFor: { '@id': `${SITE_URL}/#organization` },
+  worksFor: { '@id': `${SITE_URL}/#org` },
   sameAs: [
     'https://www.linkedin.com/in/andy-norman-ab78443a1',
     'https://www.antekautomation.com/#founder',
@@ -55,8 +55,8 @@ const aboutPageSchema = {
   '@id': `${SITE_URL}/about#aboutpage`,
   url: `${SITE_URL}/about`,
   name: 'About Call Della',
-  about: { '@id': `${SITE_URL}/#organization` },
-  mainEntity: { '@id': `${SITE_URL}/about#founder` },
+  about: { '@id': `${SITE_URL}/#org` },
+  mainEntity: { '@id': `${SITE_URL}/about/andy-norman#person` },
 };
 
 export default function AboutPage() {
