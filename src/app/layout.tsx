@@ -3,7 +3,7 @@ import { Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL, PLAUSIBLE_DOMAIN } from "@/lib/config";
 import { graph, orgNode, websiteNode, founderNode } from "@/lib/schema";
-import { CATEGORY_DEFINITION } from "@/lib/plans";
+import { page } from "@/data/pages";
 import { JsonLd } from "@/components/JsonLd";
 import { BookingModal } from "@/components/BookingModal";
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "AI Legal Intake for Law Firms, After Hours | Call Della",
     template: "%s | Call Della",
   },
-  description: CATEGORY_DEFINITION,
+  description: page("/").description,
   applicationName: "Call Della",
   authors: [{ name: "Andy Norman", url: `${SITE_URL}/about/andy-norman` }],
   creator: "Call Della",

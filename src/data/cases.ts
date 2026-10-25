@@ -182,7 +182,7 @@ export const caseData: CaseGuide[] = [
     tldr:
       'Slip and fall intake is the first-call screening a firm runs on a premises liability matter: an injury from a fall on someone else’s property. The first call records what caused the fall, who owns or runs the property, and who documented the hazard. If the property is public, the deadline can be short: New York requires a notice of claim within 90 days under General Municipal Law § 50-e.',
     description:
-      'Slip and fall intake for PI firms: what to capture on the first call, the hazard and ownership facts that matter, and the public property deadlines that run first.',
+      'Slip and fall intake for PI firms: what to capture on the first call, the hazard and ownership facts that matter, and the public property deadlines that run.',
     captureHeading: 'What should a slip and fall intake call capture?',
     captureLead:
       'A slip and fall intake call should capture the hazard, the place, the owner and the record of the fall, before the scene is cleaned up and memories fade.',
