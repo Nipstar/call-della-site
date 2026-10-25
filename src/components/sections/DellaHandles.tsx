@@ -11,7 +11,7 @@ export const DellaHandles = ({ handles, eyebrow, heading }: Props) => {
   if (!handles.length) return null;
 
   return (
-    <section className="px-8 py-24 max-w-[1180px] mx-auto">
+    <section className="px-4 md:px-8 py-24 max-w-[1180px] mx-auto">
       {eyebrow && <Eyebrow center>{eyebrow}</Eyebrow>}
       <Headline size={38} center maxWidth={760}>{heading}</Headline>
 

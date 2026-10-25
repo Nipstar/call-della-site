@@ -5,6 +5,7 @@ import { SITE_URL, PLAUSIBLE_DOMAIN } from "@/lib/config";
 import { graph, orgNode, websiteNode, founderNode } from "@/lib/schema";
 import { CATEGORY_DEFINITION } from "@/lib/plans";
 import { JsonLd } from "@/components/JsonLd";
+import { BookingModal } from "@/components/BookingModal";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -47,6 +48,13 @@ export const metadata: Metadata = {
     images: ["/og-default.png"],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  // Set these in Vercel once Search Console / Bing Webmaster Tools give you the codes.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 export default function RootLayout({
@@ -76,6 +84,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-serif bg-[var(--bg)] text-[var(--ink)]">
         <JsonLd data={graph(orgNode(), websiteNode(), founderNode())} />
         {children}
+        <BookingModal />
       </body>
     </html>
   );

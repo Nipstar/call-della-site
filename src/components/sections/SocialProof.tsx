@@ -7,11 +7,15 @@ type Props = {
   heading?: string;
 };
 
+// No testimonials until real firms give written approval (spec hard rule).
+// Flip this to true only when every quote in verticals.ts is real and approved.
+const TESTIMONIALS_APPROVED = false;
+
 export const SocialProof = ({ socialProof, eyebrow, heading }: Props) => {
-  if (!socialProof.length) return null;
+  if (!TESTIMONIALS_APPROVED || !socialProof.length) return null;
 
   return (
-    <section className="px-8 py-24 max-w-[1180px] mx-auto">
+    <section className="px-4 md:px-8 py-24 max-w-[1180px] mx-auto">
       {eyebrow && <Eyebrow center>{eyebrow}</Eyebrow>}
       {heading && <Headline size={38} center maxWidth={620}>{heading}</Headline>}
 
@@ -29,7 +33,7 @@ export const SocialProof = ({ socialProof, eyebrow, heading }: Props) => {
               &ldquo;{p.quote}&rdquo;
             </p>
             <div className="mt-4 text-[12px] text-[var(--ink-soft)] font-mono tracking-[0.08em] uppercase">
-              — {p.attribution}
+              {p.attribution}
             </div>
           </div>
         ))}

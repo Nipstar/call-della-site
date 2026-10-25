@@ -1,13 +1,24 @@
 "use client";
 
-import { useState } from 'react';
-import { N8N_WEBHOOK_URL, CONTACT_EMAIL } from '@/lib/config';
+import { useEffect, useState } from 'react';
+import { N8N_WEBHOOK_URL, CONTACT_EMAIL, TURNSTILE_SITE_KEY } from '@/lib/config';
+
+const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export const ContactForm = () => {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState<string>('');
+
+  useEffect(() => {
+    if (document.querySelector(`script[src="${TURNSTILE_SRC}"]`)) return;
+    const s = document.createElement('script');
+    s.src = TURNSTILE_SRC;
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +28,13 @@ export const ContactForm = () => {
     // Honeypot
     if (data.get('website')) {
       setStatus('success');
+      return;
+    }
+
+    const turnstileToken = data.get('cf-turnstile-response');
+    if (!turnstileToken) {
+      setStatus('error');
+      setErrorMsg('Please complete the security check');
       return;
     }
 
@@ -30,6 +48,7 @@ export const ContactForm = () => {
       message: data.get('message') || null,
       submittedAt: new Date().toISOString(),
       source: typeof window !== 'undefined' ? window.location.href : 'unknown',
+      turnstileToken,
     };
 
     setStatus('submitting');
@@ -57,7 +76,7 @@ export const ContactForm = () => {
           MESSAGE RECEIVED
         </div>
         <p className="text-[18px] text-[var(--ink)] font-serif leading-[1.55] m-0">
-          Got it. We&rsquo;ll be in touch within one business day — usually faster. If this is urgent, email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
+          Got it. We&rsquo;ll reply by email. If this is urgent, email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a>.
         </p>
       </div>
     );
@@ -70,7 +89,7 @@ export const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[28px_32px] flex flex-col gap-5">
-      {/* Honeypot — hidden from users */}
+      {/* Honeypot: hidden from users */}
       <div className="hidden" aria-hidden="true">
         <label>
           Website
@@ -132,13 +151,15 @@ export const ContactForm = () => {
           name="message"
           rows={5}
           className={fieldClass}
-          placeholder="After-hours volume, language coverage, integration needs, current pain — whatever helps us prepare."
+          placeholder="After-hours call volume, practice areas, what happens to calls now. Whatever helps us prepare."
         />
       </div>
 
+      <div className="cf-turnstile min-h-[65px]" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" data-size="flexible" />
+
       {status === 'error' && (
         <div className="px-4 py-3 border-[1.5px] border-[var(--stamp-red)] bg-[var(--paper-edge)] text-[13px] font-mono text-[var(--stamp-red)] tracking-[0.06em]">
-          Submission failed — {errorMsg}. Email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a> directly.
+          Submission failed: {errorMsg}. Email <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{CONTACT_EMAIL}</a> directly.
         </div>
       )}
 

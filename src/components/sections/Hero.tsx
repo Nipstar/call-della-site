@@ -1,31 +1,26 @@
-"use client";
-
-import { Eyebrow, Body } from '../Typography';
+import { Eyebrow } from '../Typography';
 import { CTAButton } from '../CTAButton';
 import { DossierMockup } from '../DossierMockup';
-import { trackEvent } from '@/lib/analytics';
 import type { Vertical } from '@/lib/verticals';
 
 type HeroProps = {
   hero: Vertical['hero'];
-  demo?: Vertical['demo'];
-  slug?: Vertical['slug'];
   dossier?: Vertical['heroDossier'];
   showDossier?: boolean;
 };
 
-export const Hero = ({ hero, demo, slug, dossier, showDossier = true }: HeroProps) => (
-  <section className="px-8 pt-6 pb-20 max-w-[1180px] mx-auto">
-    <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-16 items-center">
+export const Hero = ({ hero, dossier, showDossier = true }: HeroProps) => (
+  <section className="px-4 md:px-8 pt-6 pb-20 max-w-[1180px] mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-12 md:gap-16 items-center">
       <div>
         <Eyebrow>{hero.eyebrow}</Eyebrow>
-        <h1
-          className="text-[36px] md:text-[60px] font-semibold text-[var(--ink)] font-serif tracking-[-0.03em] leading-[1.05] m-0"
-          dangerouslySetInnerHTML={{ __html: hero.headline }}
+        <h1 className="text-[36px] md:text-[56px] font-semibold text-[var(--ink)] font-serif tracking-[-0.03em] leading-[1.05] m-0">
+          {hero.headline}
+        </h1>
+        <p
+          className="answer-block mt-7 max-w-[560px] text-[18px] text-[var(--ink)] font-serif leading-[1.65] m-0 [&_a]:underline [&_a]:underline-offset-2"
+          dangerouslySetInnerHTML={{ __html: hero.answer }}
         />
-        <div className="mt-7 max-w-[520px]">
-          <Body size={18}>{hero.sub}</Body>
-        </div>
         {hero.statLine && (
           <div className="mt-5 text-[12px] font-mono text-[var(--ink-soft)] tracking-[0.06em] uppercase border-t border-b border-[var(--rule-soft)] py-2.5">
             {hero.statLine}
@@ -33,7 +28,6 @@ export const Hero = ({ hero, demo, slug, dossier, showDossier = true }: HeroProp
         )}
         <div className="mt-9 flex flex-wrap gap-4">
           <CTAButton primary large>{hero.ctaPrimary}</CTAButton>
-          {hero.ctaSecondary && <CTAButton large>{hero.ctaSecondary}</CTAButton>}
         </div>
       </div>
 

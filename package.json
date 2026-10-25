@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "node scripts/llms-full.mjs",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

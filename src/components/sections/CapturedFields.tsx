@@ -11,11 +11,11 @@ export const CapturedFields = ({ capturedFields, eyebrow, heading }: Props) => {
   if (!capturedFields.length) return null;
 
   return (
-    <section className="px-8 py-24 max-w-[980px] mx-auto">
+    <section className="px-4 md:px-8 py-24 max-w-[980px] mx-auto">
       {eyebrow && <Eyebrow center>{eyebrow}</Eyebrow>}
       <Headline size={38} center maxWidth={680}>{heading}</Headline>
 
-      <div className="mt-12 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[28px_32px]">
+      <div className="mt-12 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[22px_18px] md:p-[28px_32px]">
         <div className="text-[10px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase mb-4">
           Intake fields · captured every call
         </div>

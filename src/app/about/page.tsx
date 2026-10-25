@@ -4,108 +4,126 @@ import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTAButton } from '@/components/CTAButton';
-import { Eyebrow, Headline, Body } from '@/components/Typography';
-
+import { JsonLd } from '@/components/JsonLd';
+import { Eyebrow, Headline } from '@/components/Typography';
+import { pageMeta } from '@/data/pages';
+import { graph, ORG_ID, FOUNDER_ID } from '@/lib/schema';
+import { CATEGORY_DEFINITION } from '@/lib/plans';
 import { SITE_URL, CONTACT_EMAIL } from '@/lib/config';
 
-export const metadata: Metadata = {
-  title: { absolute: 'About Call Della' },
-  description:
-    'Why we built Della — an after-hours intake specialist for personal injury, criminal defense, and immigration law firms. Founder background, why now, what the platform is.',
-  keywords: ['Call Della', 'about Call Della', 'Andy Norman founder', 'voice AI legal intake'],
-  alternates: { canonical: '/about' },
-  openGraph: {
-    title: 'About Call Della',
-    description: 'Why we built Della.',
-    type: 'profile',
-    url: `${SITE_URL}/about`,
-    images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'About Call Della' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Call Della',
-    description: 'Why we built Della.',
-    images: ['/og-default.png'],
-  },
-};
+export const metadata: Metadata = pageMeta('/about');
 
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${SITE_URL}/about/andy-norman#person`,
-  name: 'Andy Norman',
-  url: `${SITE_URL}/about`,
-  jobTitle: 'Founder',
-  worksFor: { '@id': `${SITE_URL}/#org` },
-  sameAs: [
-    'https://www.linkedin.com/in/andy-norman-ab78443a1',
-    'https://www.antekautomation.com/#founder',
-  ],
-  knowsAbout: [
-    'legal intake',
-    'voice AI',
-    'personal injury law firm operations',
-    'after-hours phone answering',
-  ],
-};
+const OBA_URL = 'https://www.okbar.org/answering-the-call-why-responsiveness-is-critical-for-law-firm-success/';
 
-const aboutPageSchema = {
-  '@context': 'https://schema.org',
+// The Person node itself is emitted once, by founderNode() in the layout. Reference it by @id only.
+const aboutPage = {
   '@type': 'AboutPage',
   '@id': `${SITE_URL}/about#aboutpage`,
   url: `${SITE_URL}/about`,
   name: 'About Call Della',
-  about: { '@id': `${SITE_URL}/#org` },
-  mainEntity: { '@id': `${SITE_URL}/about/andy-norman#person` },
+  about: { '@id': ORG_ID },
+  mainEntity: { '@id': ORG_ID },
+  author: { '@id': FOUNDER_ID },
 };
+
+const link = 'underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]';
+const para = 'text-[17px] text-[var(--ink)] font-serif leading-[1.65] m-0';
 
 export default function AboutPage() {
   return (
     <div className="relative min-h-screen flex flex-col">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+      <JsonLd data={graph(aboutPage)} />
       <PaperTexture />
       <div className="relative z-20 flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow px-8 py-16 max-w-[820px] mx-auto w-full">
+        <main className="flex-grow px-4 md:px-8 py-12 md:py-16 max-w-[820px] mx-auto w-full">
           <Breadcrumbs items={[{ name: 'About', href: '/about' }]} />
           <Eyebrow>ABOUT</Eyebrow>
           <Headline as="h1" size={44} maxWidth={820}>
-            Why Della exists.
+            About Call Della
           </Headline>
 
-          <div className="mt-8">
-            <Body size={18}>
-              Personal injury firms spend $300,000 a year on lead generation, then send 30 to 50 percent of inbound calls to voicemail outside business hours. Criminal defense firms lose $2,500 to $50,000 retainers when nobody answers the 2 a.m. arrest call. Immigration firms miss bilingual detention calls when ICE picks someone up at 4 a.m.
-            </Body>
+          <div className="answer-block mt-8 flex flex-col gap-4">
+            <p className={`${para} text-[18px]`}>{CATEGORY_DEFINITION}</p>
+            <p className={para}>
+              Call Della was founded in 2026 by Andy Norman. It is built by Antek Automation, the voice AI agency Andy
+              also founded, and Della&rsquo;s voice runs on the Retell AI platform.
+            </p>
           </div>
 
-          <div className="mt-6">
-            <Body size={17}>
-              Della is an after-hours intake specialist — a voice AI agent built specifically for legal intake from the first call. White-labelled per firm. She answers in your firm&rsquo;s name, qualifies the caller, captures the file, and hands a triage-ready dossier to your team by morning. She refuses legal advice, identifies herself as AI when asked, and operates under your firm&rsquo;s privilege and retention rules.
-            </Body>
-          </div>
+          <section className="mt-14">
+            <Headline size={30} maxWidth={760}>Why was Call Della built?</Headline>
+            <div className="mt-5 flex flex-col gap-4">
+              <p className={para}>
+                Call Della was built because law firms miss the calls that matter most, and the after-hours calls are
+                the easiest to miss. According to{' '}
+                <a href={OBA_URL} className={link}>the Oklahoma Bar Journal (September 2025)</a>, Clio&rsquo;s 2024 Legal
+                Trends Report found that only 40% of law firms answered a prospective client&rsquo;s call, down from 56% in
+                2019. An injured driver at 9pm, a parent calling about an arrest at 2am, or a family calling about a
+                detention at dawn rarely waits for a callback.
+              </p>
+              <p className={para}>
+                Call Della gives those callers an intake specialist instead of a voicemail box. Della asks the questions
+                an intake team would ask, files each call as a dossier and has the morning brief on the firm&rsquo;s desk
+                by 7am. She covers the hours the firm is closed and leaves the daytime intake team and every legal
+                judgment with the firm.
+              </p>
+            </div>
+          </section>
 
-          <div className="mt-12 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[28px_32px]">
+          <section className="mt-14">
+            <Headline size={30} maxWidth={760}>Who builds Della?</Headline>
+            <div className="mt-5 flex flex-col gap-4">
+              <p className={para}>
+                Della is built by Antek Automation, a UK-based voice AI agency that designs and runs AI phone agents for
+                businesses. Antek Automation builds Della on the Retell AI voice platform and writes the intake flows for
+                each practice area Call Della covers:{' '}
+                <a href="/personal-injury" className={link}>personal injury</a>,{' '}
+                <a href="/criminal-defense" className={link}>criminal defense</a> and{' '}
+                <a href="/immigration" className={link}>immigration</a>. Call Della is sold to law firms in the United States.
+              </p>
+            </div>
+          </section>
+
+          <section className="mt-14">
+            <Headline size={30} maxWidth={760}>What will Della never do?</Headline>
+            <div className="mt-5 flex flex-col gap-4">
+              <p className={para}>
+                Della will never give legal advice, quote fees or promise that a firm will take a case. She never claims
+                to be human, and when a caller asks, she says she is an AI intake specialist. Call Della is not a law
+                firm, and nothing on this site is legal advice. Firms should check the{' '}
+                <a href="/compliance" className={link}>AI legal intake compliance guide</a> and their own state bar rules
+                before using any AI intake service. See how call data is handled on the{' '}
+                <a href="/security" className={link}>security page</a>.
+              </p>
+            </div>
+          </section>
+
+          <section className="mt-14 bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-6 md:p-8">
             <div className="text-[10px] font-bold text-[var(--ink-soft)] tracking-[0.18em] font-mono uppercase mb-4">
               Founder
             </div>
             <div className="h-[1px] bg-[var(--rule)] mb-5" />
             <h2 className="text-[24px] font-semibold text-[var(--ink)] font-serif tracking-[-0.01em] m-0 mb-2">
-              Andy Norman
+              <a href="/about/andy-norman" className={link}>Andy Norman</a>
             </h2>
             <div className="text-[12px] text-[var(--ink-soft)] font-mono tracking-[0.08em] uppercase mb-4">
-              Founder · Call Della
+              Founder · Call Della and Antek Automation
             </div>
-            <Body size={15}>
-              Bio coming soon. In the meantime, the fastest way to learn what Della does is to{' '}
-              <a href="/personal-injury#verticals" className="underline">try a demo</a> or{' '}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="underline">email us</a>.
-            </Body>
-          </div>
+            <p className="text-[15px] text-[var(--ink)] font-serif leading-[1.65] m-0">
+              Andy Norman is the founder of Call Della and of{' '}
+              <a href="https://www.antekautomation.com" className={link}>Antek Automation</a>, a UK-based voice AI agency.
+              He designs the intake flows Della runs and writes the Call Della guides on intake, compliance and
+              operations. Andy is not a lawyer. His work is the operational side of intake: how calls are answered, which
+              questions are asked and what reaches the attorney the next morning. Read{' '}
+              <a href="/about/andy-norman" className={link}>Andy Norman&rsquo;s author page</a> or connect on{' '}
+              <a href="https://www.linkedin.com/in/andy-norman-ab78443a1" className={link}>LinkedIn</a>.
+            </p>
+          </section>
 
-          <div className="mt-12 flex flex-wrap gap-4">
+          <div className="mt-12 flex flex-wrap items-center gap-6">
             <CTAButton primary large>Book a demo</CTAButton>
+            <a href={`mailto:${CONTACT_EMAIL}`} className={`${link} font-serif text-[16px] text-[var(--ink)]`}>{CONTACT_EMAIL}</a>
           </div>
         </main>
         <Footer />

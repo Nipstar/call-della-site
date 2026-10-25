@@ -8,11 +8,12 @@ type Props = {
   intro?: string;
 };
 
+// Every stat needs a named source, a year and a URL (spec hard rule). Pass `url` alongside `source` in verticals.ts.
 export const IndustryStats = ({ industryStats, eyebrow, heading, intro }: Props) => {
   if (!industryStats.length) return null;
 
   return (
-    <section className="px-8 py-24 max-w-[1180px] mx-auto">
+    <section className="px-4 md:px-8 py-24 max-w-[1180px] mx-auto">
       {eyebrow && <Eyebrow center>{eyebrow}</Eyebrow>}
       {heading && <Headline size={42} center maxWidth={780}>{heading}</Headline>}
 
@@ -36,7 +37,12 @@ export const IndustryStats = ({ industryStats, eyebrow, heading, intro }: Props)
               {s.stat}
             </div>
             <div className="mt-3 text-[10px] text-[var(--ink-faint)] font-mono tracking-[0.12em] italic uppercase">
-              Source: {s.source}
+              Source:{' '}
+              {(s as { url?: string }).url ? (
+                <a href={(s as { url?: string }).url} className="underline underline-offset-4">{s.source}</a>
+              ) : (
+                s.source
+              )}
             </div>
           </div>
         ))}

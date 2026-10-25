@@ -10,7 +10,7 @@ export const PLAUSIBLE_DOMAIN =
 
 export const N8N_WEBHOOK_URL =
   process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ??
-  'https://antekauto.app.n8n.cloud/webhook-test/call-della';
+  'https://auto.juxtarank.com/webhook-test/call-della';
 
 // GHL booking widget (crm.antekautomation.com), shared by calldella.com and the feeder sites.
 export const BOOKING_URL =
@@ -19,3 +19,8 @@ export const BOOKING_URL =
 
 export const CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@calldella.com';
+
+// Cloudflare Turnstile ("Call Della forms" widget). The token must be verified
+// server-side with the secret key wherever the form posts (n8n now, GHL later).
+export const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '0x4AAAAAAFljNkiI7CbG-mOH';

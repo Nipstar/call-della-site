@@ -5,26 +5,23 @@ import { verticalList } from '@/lib/verticals';
 import type { VerticalSlug } from '@/lib/verticals';
 import { trackEvent } from '@/lib/analytics';
 
-const cardCopy: Record<VerticalSlug, { title: string; body: string; ctaPrefix: string }> = {
+const cardCopy: Record<VerticalSlug, { title: string; body: string }> = {
   'personal-injury': {
     title: 'The 9pm crash call.',
-    body: 'Della handles auto, slip, dog bite, and malpractice intake. She qualifies, captures the facts, and routes urgent cases to your on-call attorney.',
-    ctaPrefix: 'Try Della-PI',
+    body: 'Della handles auto, slip, dog bite, and malpractice intake. She qualifies the caller, captures the facts, and emails urgent cases to your attorney on call.',
   },
   'criminal-defense': {
     title: 'The 2am arrest call.',
     body: 'Della handles DUI, drug, assault, and domestic intake. She calms panicked family members, captures jail and bond details, and flags hearings within 24 hours.',
-    ctaPrefix: 'Try Della-Criminal',
   },
   'immigration': {
     title: 'The detention call. In English or Spanish.',
-    body: 'Della handles detention, removal, asylum, and family-petition intake — natively bilingual. Spanish on greeting, no translation lag.',
-    ctaPrefix: 'Try Della-Immigration',
+    body: 'Della handles detention, removal, asylum and family-petition intake in English or Spanish. She picks up the caller\u2019s language on the greeting.',
   },
 };
 
 export const VerticalPicker = () => (
-  <section id="verticals" className="px-8 py-24 max-w-[1180px] mx-auto">
+  <section id="verticals" className="px-4 md:px-8 py-24 max-w-[1180px] mx-auto">
     <Eyebrow center>PICK A PRACTICE AREA</Eyebrow>
     <Headline size={42} center maxWidth={680}>Della speaks your firm&rsquo;s language.</Headline>
     <div className="mt-7 max-w-[640px] mx-auto text-center">
@@ -59,7 +56,7 @@ export const VerticalPicker = () => (
               onClick={() => trackEvent('vertical_card_click', { slug: v.slug })}
               className="mt-5 inline-flex items-center gap-1.5 text-[11.5px] font-bold tracking-[0.14em] font-mono uppercase no-underline text-[var(--ink)] hover:text-[var(--stamp-red)] transition-colors"
             >
-              Read more about the {v.shortName} flow
+              {v.name} intake
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />

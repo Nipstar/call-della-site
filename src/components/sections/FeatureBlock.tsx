@@ -6,8 +6,8 @@ type Props = {
 };
 
 export const FeatureBlock = ({ featureBlock }: Props) => (
-  <section className="px-8 py-24 bg-[var(--paper-edge)] border-y border-[var(--rule)]">
-    <div className="max-w-[1120px] mx-auto px-4 grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-16 items-start">
+  <section className="px-4 md:px-8 py-24 bg-[var(--paper-edge)] border-y border-[var(--rule)]">
+    <div className="max-w-[1120px] mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-16 items-start">
       <div>
         {featureBlock.eyebrow && <Eyebrow>{featureBlock.eyebrow}</Eyebrow>}
         <Headline size={40} maxWidth={520}>{featureBlock.heading}</Headline>

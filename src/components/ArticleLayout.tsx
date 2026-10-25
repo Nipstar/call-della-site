@@ -96,7 +96,7 @@ export const ArticleLayout = ({
             </div>
           </div>
 
-          <article className="prose prose-p:font-serif prose-p:text-[17px] prose-p:leading-[1.6] prose-p:text-[var(--ink)] prose-headings:font-serif prose-headings:text-[var(--ink)] prose-h2:text-[28px] prose-h2:font-semibold prose-h2:tracking-[-0.02em] prose-h2:mt-14 prose-h2:mb-5 prose-h3:text-[20px] prose-h3:font-semibold prose-h3:mt-8 prose-h3:mb-3 prose-li:font-serif prose-li:text-[17px] prose-a:text-[var(--ink)] prose-a:underline prose-a:decoration-[var(--rule-soft)] prose-a:underline-offset-4 hover:prose-a:decoration-[var(--ink)] prose-strong:font-semibold max-w-none">
+          <article className="article-body">
             {children}
           </article>
         </main>

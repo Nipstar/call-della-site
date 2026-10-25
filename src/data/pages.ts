@@ -85,12 +85,13 @@ export const page = (path: string): PageEntry => {
 export const pageMeta = (path: string, extra: Partial<Metadata> = {}): Metadata => {
   const p = page(path);
   const url = `${SITE_URL}${path === '/' ? '' : path}`;
+  const image = p.section === 'practice' ? `/og-${path.slice(1)}.png` : '/og-default.png';
   return {
     title: { absolute: p.title },
     description: p.description,
     alternates: { canonical: path },
-    openGraph: { title: p.title, description: p.description, url, type: p.section === 'core' || p.section === 'practice' ? 'website' : 'article', images: [{ url: '/og-default.png', width: 1200, height: 630, alt: p.title }] },
-    twitter: { card: 'summary_large_image', title: p.title, description: p.description, images: ['/og-default.png'] },
+    openGraph: { title: p.title, description: p.description, url, type: p.section === 'core' || p.section === 'practice' ? 'website' : 'article', images: [{ url: image, width: 1200, height: 630, alt: p.title }] },
+    twitter: { card: 'summary_large_image', title: p.title, description: p.description, images: [image] },
     ...extra,
   };
 };

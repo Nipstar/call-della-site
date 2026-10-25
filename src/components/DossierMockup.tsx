@@ -23,8 +23,8 @@ const defaultHeroData: NonNullable<Vertical['heroDossier']> = {
 export const DossierMockup = ({ variant, data }: DossierMockupProps) => {
   const ariaLabel =
     variant === 'hero'
-      ? 'Sample Della intake report — caller name, phone number, incident summary, urgency stamp.'
-      : 'Sample morning dossier dashboard — overnight calls sorted by urgency tier with caller details and recommended actions.';
+      ? 'Sample Della intake report: caller name, phone number, incident summary, urgency stamp.'
+      : 'Sample morning dossier dashboard: overnight calls sorted by urgency tier with caller details and recommended actions.';
 
   if (variant === 'hero') {
     const d = data ?? defaultHeroData;
@@ -32,7 +32,7 @@ export const DossierMockup = ({ variant, data }: DossierMockupProps) => {
       <div role="img" aria-label={ariaLabel} className="relative py-[30px] w-full max-w-lg mx-auto">
         <div className="bg-[var(--paper)] border-[1.5px] border-[var(--rule)] p-[22px_26px] shadow-[6px_6px_0_var(--rule)] rotate-[1.5deg] relative">
           <div className="absolute top-[-1px] left-[22px] bg-[var(--paper-edge)] border-[1.5px] border-[var(--rule)] border-b-0 px-3 py-[3px] text-[10px] font-bold text-[var(--ink-soft)] tracking-[0.14em] font-mono -translate-y-full">
-            INTAKE REPORT · {d.intakeId}
+            SAMPLE · INTAKE REPORT · {d.intakeId.replace(/^SAMPLE /, '')}
           </div>
           <div className="flex justify-between items-start mb-3">
             <div>
