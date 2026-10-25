@@ -14,6 +14,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { pageMeta } from "@/data/pages";
 import { graph, serviceNode } from "@/lib/schema";
 import { CATEGORY_DEFINITION } from "@/lib/plans";
+import { MissedCallSection } from "@/components/sections/MissedCallSection";
 
 export const metadata: Metadata = pageMeta("/");
 
@@ -81,6 +82,8 @@ export default function Home() {
               <a href="/operations" className={link}>law firm intake operations guides</a> for the cost side of missed calls.
             </p>
           </Passage>
+
+          <MissedCallSection />
 
           <VerticalPicker />
 

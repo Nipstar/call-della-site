@@ -5,6 +5,7 @@ import { PaperTexture } from '@/components/PaperTexture';
 import { SecurityStrip } from '@/components/sections/SecurityStrip';
 import { PricingTeaser } from '@/components/sections/PricingTeaser';
 import { HomeFinalCTA } from '@/components/sections/HomeFinalCTA';
+import { MissedCallSection } from '@/components/sections/MissedCallSection';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { FAQ } from '@/components/FAQ';
 import { JsonLd } from '@/components/JsonLd';
@@ -224,6 +225,7 @@ export default function HowItWorksPage() {
             </div>
           </section>
 
+          <MissedCallSection />
           <FAQ items={faq} eyebrow="HOW IT WORKS FAQ" heading="Questions about how Della handles a call" />
           <SecurityStrip />
           <PricingTeaser />

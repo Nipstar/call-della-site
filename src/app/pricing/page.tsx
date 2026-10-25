@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer';
 import { PaperTexture } from '@/components/PaperTexture';
 import { Pricing } from '@/components/sections/Pricing';
 import { PricingFAQ } from '@/components/sections/PricingFAQ';
+import { MissedCallSection } from '@/components/sections/MissedCallSection';
 import { HomeFinalCTA } from '@/components/sections/HomeFinalCTA';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Eyebrow, Headline } from '@/components/Typography';
@@ -130,6 +131,8 @@ export default function PricingPage() {
               </p>
             </div>
           </section>
+
+          <MissedCallSection />
 
           <PricingFAQ />
 

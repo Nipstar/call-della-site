@@ -9,6 +9,7 @@ import { CapturedFields } from './sections/CapturedFields';
 import { ComplianceSection } from './sections/ComplianceSection';
 import { FeatureBlock } from './sections/FeatureBlock';
 import { VerticalFAQ } from './sections/VerticalFAQ';
+import { MissedCallSection } from './sections/MissedCallSection';
 import { DemoCallout } from './sections/DemoCallout';
 import { Breadcrumbs } from './Breadcrumbs';
 import { JsonLd } from './JsonLd';
@@ -27,6 +28,12 @@ const prose = 'text-[17px] text-[var(--ink)] font-serif leading-[1.65] m-0 [&_a]
 const Section = ({ children, id }: { children: ReactNode; id?: string }) => (
   <section id={id} className="px-4 md:px-8 py-16 max-w-[780px] mx-auto">{children}</section>
 );
+
+const MATTER: Record<string, string> = {
+  'personal-injury': 'injury case',
+  'criminal-defense': 'criminal matter',
+  immigration: 'immigration matter',
+};
 
 export const VerticalLanderShell = ({ vertical }: Props) => {
   const path = `/${vertical.slug}`;
@@ -146,6 +153,8 @@ export const VerticalLanderShell = ({ vertical }: Props) => {
               ))}
             </ul>
           </Section>
+
+          <MissedCallSection matter={MATTER[vertical.slug] ?? 'case'} />
 
           <VerticalFAQ
             faq={vertical.faq}
