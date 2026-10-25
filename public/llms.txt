@@ -20,9 +20,10 @@ Della answers your firm's overnight phone, qualifies every caller, and delivers 
 
 ## Pricing
 
-- **Standard**: $297/month (Up to 400 minutes, 1 dedicated AI intake specialist)
-- **Practice**: $547/month (Up to 1,000 minutes, SMS notifications, custom protocol, 90-day archive)
-- **Group**: Contact Sales (Custom volume, multiple agents, CRM webhook integration, dedicated success manager)
+- **Solo**: $329/month (300 minutes, for solo lawyers)
+- **Practice**: $598/month (600 minutes, for small and growing firms)
+- **Group**: Contact Sales (custom minutes, more than one practice area, CRM webhook)
+- Every plan includes: Della answering in the firm's name nights, weekends and holidays; the Call Della dashboard (every call as a dossier with summary, urgency score, recording and transcript); urgent-call email alerts to the attorney on call; the 7am morning brief; state recording disclosure; own Della number with forwarding and a test call.
 - Overage: $0.50 / minute. Month-to-month, cancel any time after 30 days.
 
 ## Key URLs
@@ -39,4 +40,4 @@ Della answers your firm's overnight phone, qualifies every caller, and delivers 
 
 ## Contact
 
-Visit calldella.com to book a 20-minute discovery call. Email hello@calldella.com.
+Visit calldella.com to book a 30-minute demo. Email hello@calldella.com.

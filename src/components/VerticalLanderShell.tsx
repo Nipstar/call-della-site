@@ -107,9 +107,9 @@ export const VerticalLanderShell = ({ vertical }: Props) => {
           <DemoCallout
             demo={vertical.demo}
             slug={vertical.slug}
-            eyebrow="TRY DELLA BEFORE YOU TRUST HER"
-            heading={`Call Della-${vertical.shortName}. Talk to her like a real intake.`}
-            sub="If she earns it, book a discovery call and we'll have you live in a week."
+            eyebrow="HEAR DELLA BEFORE YOU TRUST HER"
+            heading={`Hear Della-${vertical.shortName} take a real intake.`}
+            sub="Book a 30-minute demo. We run a live call for your practice area while you listen, then walk you through the dossier."
           />
         </main>
         <Footer />

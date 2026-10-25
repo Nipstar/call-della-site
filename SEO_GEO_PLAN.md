@@ -231,7 +231,7 @@ Don't launch with 50 states. Launch with the 6 states where PI volume is highest
 <H2>Pricing for [State] firms</H2>
 [Same pricing as everywhere; no fake regional discounts]
 
-<CTA>Book a discovery call</CTA>
+<CTA>Book a demo</CTA>
 
 <H2>Frequently asked by [State] firms</H2>
 [5-7 state-specific FAQ entries, NOT a copy-paste of the global FAQ]
@@ -411,7 +411,7 @@ Implement `llms.txt` at the root of calldella.com. Emerging standard, easy to ad
 ## Key facts
 - Founded 2026
 - Built on Retell AI infrastructure
-- Plans: Standard ($149), Practice ($249), Group ($599)
+- Plans: Solo ($329, 300 min), Practice ($598, 600 min), Group (custom)
 ```
 
 **Priority 4 — Schema markup (week 1)**

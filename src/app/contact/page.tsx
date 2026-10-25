@@ -65,7 +65,7 @@ export default function ContactPage() {
 
           <div className="mt-8">
             <Body size={17}>
-              Twenty-minute discovery call. No pitch deck. We&rsquo;ll walk you through the dossier, let you hear Della work, and answer questions. Fill the form below or email{' '}
+              Thirty-minute demo. No pitch deck. We&rsquo;ll walk you through the dossier, let you hear Della work, and answer questions. Fill the form below or email{' '}
               <a href={`mailto:${CONTACT_EMAIL}`} className="underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]">{CONTACT_EMAIL}</a>.
             </Body>
           </div>
@@ -80,8 +80,7 @@ export default function ContactPage() {
             </div>
             <div className="h-[1px] bg-[var(--rule-soft)] mb-4" />
             <Body size={15}>
-              The PI demo line is live now:{' '}
-              <a href="tel:+16505360172" className="font-semibold no-underline">(650) 536-0172</a>. Or{' '}
+              Book a demo and we&apos;ll walk you through a live Della call on a 30-minute video call. Or{' '}
               <a href="/personal-injury" className="underline decoration-[var(--rule-soft)] underline-offset-4 hover:decoration-[var(--ink)]">read the PI lander</a> first.
             </Body>
           </div>

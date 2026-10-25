@@ -38,7 +38,7 @@ export const caseData = [
     },
     faqs: [
       { q: "Does Della know the difference between a standard truck and a commercial motor vehicle?", a: "Yes. Della's intelligence allows her to probe whether a 'truck' means a Ford F-150 or a Freightliner 18-wheeler, completely altering the intake urgency." },
-      { q: "Will Della wake up a partner for a commercial trucking incident?", a: "On the Practice and Group tiers, Della can be configured to immediately SMS the on-call partner if a caller describes a catastrophic commercial trucking incident." }
+      { q: "Will Della wake up a partner for a commercial trucking incident?", a: "On every plan, Della sends an urgent-call email alert to the attorney on call straight away if a caller describes a catastrophic commercial trucking incident." }
     ]
   },
   {

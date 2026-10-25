@@ -53,7 +53,7 @@ export const DemoCallout = ({ demo, eyebrow, heading, sub, slug }: Props) => {
         )}
 
         <div className="mt-9 flex justify-center">
-          <CTAButton primary large onClick={onBookClick}>Book a discovery call</CTAButton>
+          <CTAButton primary large onClick={onBookClick}>Book a demo</CTAButton>
         </div>
       </div>
     </section>

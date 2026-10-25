@@ -104,14 +104,14 @@ export default async function StatePage({ params }: { params: Promise<{ slug: st
 
             <h2>Pricing for {state.name} firms</h2>
             <p>
-              We don&apos;t do regional pricing adjustments. Call Della offers the same transparent, flat-rate tiers nationally — Standard, Practice, and Group, all month-to-month with no setup fees.
+              We don&apos;t do regional pricing adjustments. Call Della offers the same transparent, flat-rate tiers nationally — Solo, Practice, and Group, all month-to-month with no setup fees.
             </p>
             <p>
               <a href="/pricing">See full pricing →</a>
             </p>
 
             <div className="my-12">
-              <CTAButton primary>Book a discovery call</CTAButton>
+              <CTAButton primary>Book a demo</CTAButton>
             </div>
 
             <h2>Frequently asked by {state.name} firms</h2>

@@ -37,6 +37,10 @@ const personSchema = {
   url: `${SITE_URL}/about`,
   jobTitle: 'Founder',
   worksFor: { '@id': `${SITE_URL}/#organization` },
+  sameAs: [
+    'https://www.linkedin.com/in/andy-norman-ab78443a1',
+    'https://www.antekautomation.com/#founder',
+  ],
   knowsAbout: [
     'legal intake',
     'voice AI',
@@ -101,7 +105,7 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-12 flex flex-wrap gap-4">
-            <CTAButton primary large>Book a discovery call</CTAButton>
+            <CTAButton primary large>Book a demo</CTAButton>
           </div>
         </main>
         <Footer />

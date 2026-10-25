@@ -35,7 +35,7 @@ export const HomeHero = () => (
             onClick={onBookFromHomepage}
             className="inline-flex items-center gap-2.5 px-6 py-[14px] bg-[var(--ink)] text-[var(--paper)] border-[1.5px] border-[var(--ink)] text-[13px] font-bold tracking-[0.14em] font-mono uppercase cursor-pointer transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_var(--rule)]"
           >
-            Book a discovery call
+            Book a demo
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -45,7 +45,7 @@ export const HomeHero = () => (
             onClick={onScrollToVerticals}
             className="inline-flex items-center gap-2.5 px-6 py-[14px] bg-transparent text-[var(--ink)] border-[1.5px] border-[var(--ink)] text-[13px] font-bold tracking-[0.14em] font-mono uppercase cursor-pointer transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_var(--rule)]"
           >
-            Try Della — pick a practice area
+            See the practice areas
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19" />
               <polyline points="19 12 12 19 5 12" />

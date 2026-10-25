@@ -52,7 +52,8 @@ export const Footer = () => (
       </div>
     </div>
     <div className="max-w-[1180px] mx-auto mt-10 pt-5 border-t border-[var(--rule-soft)] text-center text-[10px] text-[var(--ink-soft)] font-mono tracking-[0.18em]">
-      © 2026 CALL DELLA · ALL RIGHTS RESERVED
+      © 2026 CALL DELLA · ALL RIGHTS RESERVED · DELLA IS MADE BY{' '}
+      <a href="https://www.antekautomation.com" className="text-[var(--ink-soft)] underline decoration-[var(--rule-soft)] underline-offset-4 hover:text-[var(--ink)]">ANTEK AUTOMATION</a>
     </div>
   </footer>
 );

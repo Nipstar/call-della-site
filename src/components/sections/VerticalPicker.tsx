@@ -29,7 +29,7 @@ export const VerticalPicker = () => (
     <Headline size={42} center maxWidth={680}>Della speaks your firm&rsquo;s language.</Headline>
     <div className="mt-7 max-w-[640px] mx-auto text-center">
       <Body size={16} center maxWidth={640}>
-        Three intake flows, each tuned to the calls your practice actually gets at 11pm. Pick the one that fits — call the number, talk to Della, decide if she earns a place at your firm.
+        Three intake flows, each tuned to the calls your practice actually gets at 11pm. Pick the one that fits, then book a demo to hear Della take a live call for your practice.
       </Body>
     </div>
 

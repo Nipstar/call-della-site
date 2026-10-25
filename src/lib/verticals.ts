@@ -10,7 +10,7 @@ export type Vertical = {
     sub: string;
     statLine: string;
     ctaPrimary: string;
-    ctaSecondary: string;
+    ctaSecondary?: string;
   };
   demo: {
     phoneDisplay: string;
@@ -70,12 +70,11 @@ export const verticals: Record<VerticalSlug, Vertical> = {
       headline: 'Della takes the<br/>overnight calls.<br/><span class="italic" style="color:var(--ink-soft)">Your team takes<br/>the morning.</span>',
       sub: 'An after-hours intake specialist for personal injury law firms. Every overnight caller — auto, trucking, premises, malpractice — on your desk by dawn.',
       statLine: 'PI firms spend $300K/year on leads. 30–50% of after-hours calls go to voicemail.',
-      ctaPrimary: 'Try Della-PI — call now',
-      ctaSecondary: 'Book a discovery call',
+      ctaPrimary: 'Book a demo',
     },
     demo: {
-      phoneDisplay: '(650) 536-0172',
-      phoneE164: '+16505360172',
+      phoneDisplay: 'TBD',
+      phoneE164: '+10000000000',
       label: 'Try Della-PI — call now',
     },
     heroDossier: {
@@ -175,7 +174,7 @@ export const verticals: Record<VerticalSlug, Vertical> = {
       },
       {
         question: 'Will Della wake up a partner for a catastrophic injury call?',
-        answer: 'On the Practice and Group tiers, Della can SMS the on-call partner immediately when the caller describes a fatality, ICU admission, life-flight, or catastrophic commercial-vehicle incident.',
+        answer: 'On every plan, Della emails an urgent-call alert to the attorney on call straight away when the caller describes a fatality, ICU admission, life-flight, or catastrophic commercial-vehicle incident.',
       },
     ],
     socialProof: [],
@@ -217,8 +216,7 @@ export const verticals: Record<VerticalSlug, Vertical> = {
       headline: 'Never miss<br/>another arrest call.',
       sub: "It's 2:13am. A panicked spouse is calling every defense firm in the city after their partner just got booked for DUI. The first firm to pick up wins the retainer. Della picks up.",
       statLine: 'First call wins. Retainers run $2,500 to $50,000+. Voicemail loses 70%.',
-      ctaPrimary: 'Try Della-Criminal — call now',
-      ctaSecondary: 'Book a discovery call',
+      ctaPrimary: 'Book a demo',
     },
     demo: {
       phoneDisplay: 'TBD',
@@ -373,8 +371,7 @@ export const verticals: Record<VerticalSlug, Vertical> = {
       headline: 'Never miss<br/>another detention call.',
       sub: "ICE doesn't keep office hours. Della answers in English or Spanish, captures the urgent details from a panicked family member, and has the file ready when your immigration team starts work.",
       statLine: '60–70% of US immigration calls come in Spanish. Della handles both, natively.',
-      ctaPrimary: 'Try Della-Immigration — call now',
-      ctaSecondary: 'Book a discovery call',
+      ctaPrimary: 'Book a demo',
     },
     demo: {
       phoneDisplay: 'TBD',

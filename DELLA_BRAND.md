@@ -228,14 +228,15 @@ Subtle SVG noise overlay at 2.5% opacity, multiply blend mode. Sells the "paper"
 When showing pricing, use the staffing-service framing, not the SaaS-tier framing:
 
 ❌ "Starter / Pro / Enterprise"
-✅ "**Standard / Practice / Group**" — sounds like billable rates, not software tiers
+✅ "**Solo / Practice / Group**" — sounds like billable rates, not software tiers
 
-Suggested mapping:
-- **Standard** — $149/mo, up to 150 minutes, single agent
-- **Practice** — $249/mo, up to 300 minutes, single agent (most popular)
-- **Group** — $599/mo, up to 1000 minutes, multiple agents
+Current plans (confirmed 25 Oct 2026):
+- **Solo** — $329/mo, 300 minutes, for solo lawyers
+- **Practice** — $598/mo, 600 minutes, for small and growing firms (most popular)
+- **Group** — custom minutes, more than one practice area, CRM webhook
+- Overage $0.50/min. Month-to-month, no setup fee.
 
-Always show prices on the website. Hiding behind "request a demo" cedes the trust ground to competitors who do show their numbers.
+Always show prices on the website. Never show live demo phone numbers: the primary CTA is Book a demo, where we run a live Della call for the prospect. Hiding behind "request a demo" cedes the trust ground to competitors who do show their numbers.
 
 ---
 

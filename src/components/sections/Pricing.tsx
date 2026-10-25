@@ -3,9 +3,9 @@ import { openBookingModal } from '../BookingModal';
 
 export const Pricing = () => {
   const tiers = [
-    { name:"STANDARD · ENTRY", price:297, mins:"400", popular:false, features:["1 dedicated AI intake specialist","Call summaries + transcripts","Urgency classification","Email notifications","Standard email support"], cta:"Hire Standard" },
-    { name:"PRACTICE · POPULAR", price:547, mins:"1,000", popular:true, features:["Everything in Standard","SMS notifications for urgent calls","Custom intake protocol per firm","Priority email + phone support","Recording archive (90 days)"], cta:"Hire Practice" },
-    { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"Custom", popular:false, features:["Everything in Practice","Multiple AI agents (different personas)","CRM webhook integration","Dedicated success manager","SLA guarantees"], cta:"Book a conversation" }
+    { name:"SOLO · SOLO LAWYERS", price:329, mins:"300", popular:false, features:["Della answering in your firm's name, nights, weekends and holidays","Dashboard: every call as a dossier with summary, urgency score, recording and transcript","Urgent-call email alerts to the attorney on call","Morning brief by 7am in your time zone","Recording disclosure set for your state","Your own Della number, forwarding and a test call before go-live"], cta:"Hire Solo" },
+    { name:"PRACTICE · POPULAR", price:598, mins:"600", popular:true, features:["Everything in Solo","Built for small and growing firms","Double the minutes"], cta:"Hire Practice" },
+    { name:"GROUP · MULTI-OFFICE", price:"Contact Sales", mins:"Custom", popular:false, features:["Everything in Practice","Custom minutes, priced to your volume","More than one practice area","CRM webhook"], cta:"Book a demo" }
   ];
   return (
     <section id="pricing" className="px-8 pb-12 max-w-[1180px] mx-auto">

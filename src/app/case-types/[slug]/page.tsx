@@ -118,7 +118,7 @@ export default async function CaseTypePage({ params }: { params: Promise<{ slug:
             </div>
 
             <div className="my-12">
-              <CTAButton primary>Book a discovery call</CTAButton>
+              <CTAButton primary>Book a demo</CTAButton>
             </div>
 
             <h2>Frequently Asked Questions</h2>

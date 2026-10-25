@@ -14,7 +14,7 @@ import { SITE_URL } from '@/lib/config';
 export const metadata: Metadata = {
   title: 'Pricing — Three plans, month-to-month',
   description:
-    'Standard $297, Practice $547, Group custom. Up to 400/1,000/custom minutes. Month-to-month, no setup fees, $0.50 per-minute overage.',
+    'Solo $329, Practice $598, Group custom. 300, 600 or custom minutes. Month-to-month, no setup fees, $0.50 per-minute overage.',
   keywords: [
     'Call Della pricing',
     'AI legal intake pricing',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/pricing' },
   openGraph: {
     title: 'Pricing — Three plans, month-to-month | Call Della',
-    description: 'Standard $297, Practice $547, Group custom. Month-to-month, no setup fees.',
+    description: 'Solo $329, Practice $598, Group custom. Month-to-month, no setup fees.',
     type: 'website',
     url: `${SITE_URL}/pricing`,
     images: [{ url: '/og-default.png', width: 1200, height: 630, alt: 'Call Della pricing' }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Pricing — Three plans, month-to-month | Call Della',
-    description: 'Standard $297, Practice $547, Group custom.',
+    description: 'Solo $329, Practice $598, Group custom.',
     images: ['/og-default.png'],
   },
 };
@@ -50,12 +50,12 @@ const productSchema = {
   offers: [
     {
       '@type': 'Offer',
-      name: 'Standard',
-      price: '297',
+      name: 'Solo',
+      price: '329',
       priceCurrency: 'USD',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
-        price: '297',
+        price: '329',
         priceCurrency: 'USD',
         unitText: 'MONTH',
       },
@@ -66,11 +66,11 @@ const productSchema = {
     {
       '@type': 'Offer',
       name: 'Practice',
-      price: '547',
+      price: '598',
       priceCurrency: 'USD',
       priceSpecification: {
         '@type': 'UnitPriceSpecification',
-        price: '547',
+        price: '598',
         priceCurrency: 'USD',
         unitText: 'MONTH',
       },

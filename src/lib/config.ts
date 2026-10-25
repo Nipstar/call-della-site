@@ -12,9 +12,10 @@ export const N8N_WEBHOOK_URL =
   process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ??
   'https://antekauto.app.n8n.cloud/webhook-test/call-della';
 
-export const CALCOM_URL =
-  process.env.NEXT_PUBLIC_CALCOM_URL ??
-  'https://cal.com/antek-automation/30min-gmail';
+// GHL booking widget (crm.antekautomation.com), shared by calldella.com and the feeder sites.
+export const BOOKING_URL =
+  process.env.NEXT_PUBLIC_BOOKING_URL ??
+  'https://crm.antekautomation.com/widget/booking/4rCy7x8UfYzn4YktNNkF';
 
 export const CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'hello@calldella.com';

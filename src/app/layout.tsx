@@ -69,7 +69,7 @@ export default function RootLayout({
       height: 630,
     },
     description:
-      "After-hours AI intake specialist for personal injury, criminal defense, and immigration law firms.",
+      "Call Della is an after-hours intake specialist for law firms: personal injury, criminal defense and immigration. Della answers your firm's overnight phone, qualifies every caller, and delivers a triage-ready dossier by dawn.",
     foundingDate: "2025",
     founder: {
       "@type": "Person",
@@ -77,6 +77,25 @@ export default function RootLayout({
       name: "Andy Norman",
       jobTitle: "Founder",
       url: `${SITE_URL}/about`,
+      sameAs: [
+        "https://www.linkedin.com/in/andy-norman-ab78443a1",
+        "https://www.antekautomation.com/#founder",
+      ],
+    },
+    // Call Della has no profiles of its own yet; entity trust comes via the parent brand.
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Antek Automation",
+      url: "https://www.antekautomation.com",
+      sameAs: [
+        "https://www.linkedin.com/company/antek-automation",
+        "https://x.com/AntekAutomation",
+        "https://www.youtube.com/@AntekAutomation",
+        "https://www.instagram.com/antekautomation/",
+        "https://www.facebook.com/people/Antek-Automation-Intelligent-Voice-Ai-Chat-Agents/61587195202811/",
+        "https://www.crunchbase.com/organization/antek-automation",
+        "https://clutch.co/profile/antek-automation",
+      ],
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -93,7 +112,6 @@ export default function RootLayout({
       "immigration intake",
       "voice AI for law firms",
       "ABA Formal Opinion 512",
-      "HIPAA-compliant call handling",
     ],
     areaServed: { "@type": "Country", name: "United States" },
     sameAs: [],
